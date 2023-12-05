@@ -23,6 +23,10 @@ public class CheckLogin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         username = request.getParameter("username");
         password = request.getParameter("password");
+
+        /* 从数据库中找出该id的对应的pwd，比较是否一样 */
+
+
         if(username.equals("123") && password.equals("123")){
             //得到session
             HttpSession session = request.getSession();
