@@ -44,7 +44,34 @@
                 // 发送请求
                 xhr.send();
             });
-        })
+
+            // 获取密码输入框
+            var passwordInput = document.getElementById("password");
+
+            // 注册输入事件
+            passwordInput.addEventListener("input", function () {
+                // 获取密码
+                var password = this.value;
+
+                // 创建正则表达式对象，用于检查密码格式
+                var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,12}$/;
+                console.log("11")
+
+                // 检查密码是否符合格式
+                if (!passwordPattern.test(password)) {
+                    console.log("22")
+                    // 密码不符合格式，显示错误信息
+                    document.getElementById("error").innerText = "密码必须包含数字和字母，并且长度为5到12位。";
+                } else {
+                    console.log("33")
+                    // 密码符合格式，清空错误信息
+                    document.getElementById("error").innerText = "";
+                }
+            });
+
+        });
+
+
 
 
     </script>
@@ -109,7 +136,7 @@
         <label for="password">密码:</label><br>
         <input type="password" id="password" name="password"><br><br>
 
-        <input type="submit" value="登录">
+        <input type="submit" value="注册">
     </form>
 </body>
 </html>
