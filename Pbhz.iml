@@ -20,5 +20,17 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 10.0.12" level="application_server_libraries" />
+    <orderEntry type="library" name="druid-1.2.9" level="project" />
+    <orderEntry type="library" name="ZhenziSmsSDK" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="tomcat-api" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.22" level="project" />
+    <orderEntry type="library" name="json-lib-2.4-jdk15" level="project" />
+    <orderEntry type="library" name="fastjson-1.2.75" level="project" />
+    <orderEntry type="library" name="ezmorph-1.0.6" level="project" />
+    <orderEntry type="library" name="commons-beanutils-1.8.0" level="project" />
+    <orderEntry type="library" name="commons-collections-3.2.1" level="project" />
+    <orderEntry type="library" name="commons-lang-2.4" level="project" />
+    <orderEntry type="library" name="commons-logging" level="project" />
   </component>
 </module>

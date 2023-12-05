@@ -1,5 +1,6 @@
 package com.tml.web;
 
+import com.tml.service.LoginServer;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ public class CheckLogin extends HttpServlet {
 
     private String password = null;
     private String username = null;
+    private LoginServer loginServer = new LoginServer();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
@@ -26,8 +28,8 @@ public class CheckLogin extends HttpServlet {
 
         /* 从数据库中找出该id的对应的pwd，比较是否一样 */
 
-
-        if(username.equals("123") && password.equals("123")){
+        String result = loginServer.userLogin(username,password);
+        if(result.equals("success")){
             //得到session
             HttpSession session = request.getSession();
             //设置最长访问间隔时间是一天
