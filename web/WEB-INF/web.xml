@@ -15,15 +15,22 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>checkLogin</servlet-name>
-        <servlet-class>com.tml.web.CheckLogin</servlet-class>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>com.tml.web.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>checkLogin</servlet-name>
-        <url-pattern>/checkLogin</url-pattern>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
     </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>registerServlet</servlet-name>
+        <servlet-class>com.tml.web.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registerServlet</servlet-name>
+        <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>

@@ -1,6 +1,6 @@
 package com.tml.web;
 
-import com.tml.service.LoginServer;
+import com.tml.service.impl.LoginServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,12 +10,12 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name="checkLogin")
-public class CheckLogin extends HttpServlet {
+@WebServlet(name="loginServlet")
+public class LoginServlet extends HttpServlet {
 
     private String password = null;
     private String username = null;
-    private LoginServer loginServer = new LoginServer();
+    private LoginServiceImpl loginServer = new LoginServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
@@ -40,7 +40,7 @@ public class CheckLogin extends HttpServlet {
             response.sendRedirect("home.html");
         }
         else{
-            response.sendRedirect("login.html");
+            response.sendRedirect("login/login.html");
         }
 
     }

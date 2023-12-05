@@ -1,12 +1,12 @@
-package com.tml.service;
+package com.tml.service.impl;
 
 import com.tml.bean.User;
 import com.tml.dao.UserDAO;
+import com.tml.service.LoginService;
 
-public class LoginServer {
-
-
-    public String userLogin(String username,String password){
+public class LoginServiceImpl implements LoginService {
+    @Override
+    public String userLogin(String username, String password) {
         UserDAO userDAO = new UserDAO();
         User user = null;
         user = userDAO.check_id(username);
@@ -18,5 +18,6 @@ public class LoginServer {
         }
         return "success";
     }
+
 
 }

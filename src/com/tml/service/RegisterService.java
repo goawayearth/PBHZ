@@ -1,0 +1,12 @@
+package com.tml.service;
+
+public interface RegisterService {
+
+    /**
+     * 实现检测username不重复并创建账户
+     * @param username
+     * @param password
+     * @return
+     */
+    abstract public String createUser(String username,String password);
+}
