@@ -1,0 +1,328 @@
+
+.container{
+    width:1000px;
+    margin:0 auto;
+}
+
+/* 去掉下划线 */
+a{
+    text-decoration: none;
+}
+
+dd{
+    padding: -20px;
+}
+
+/* 去掉小圆点 */
+li{
+    list-style-type: none;
+}
+
+button{
+    border: none;
+    color: white
+}
+
+input{
+    outline: none;
+    border: none;
+    height: 20px;
+}
+
+body{
+    width:100%;
+    background-color:rgb(233, 229, 229);
+}
+
+/* 顶部总体 */
+.header{
+    width:100%;
+    height:300px;
+    background-color: rgb(233, 229, 229);
+    /* margin-bottom: -20px; */
+}
+
+.enter{
+    background-color: skyblue
+}
+
+.header span{
+    font-size: small;
+}
+
+.header-top{
+    width:100%;
+    height:60px;
+    background-color: rgb(47, 143, 233);
+
+}
+
+.choice:hover{
+    background-color: skyblue
+}
+
+.header-top ul{
+    height: 60px;
+    margin: 0px;
+}
+
+
+.header-top li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header .header-top li a{
+    color:white
+}
+
+.top-left{
+    float: left;
+}
+
+.top-left li{
+    float: left;
+    height: 60px;
+    color: white;
+    margin-left: 10px;
+}
+
+.top-left img{
+    margin-left:-20px;
+}
+
+.top-right{
+    float: right;
+    height: 28px;
+
+}
+
+.top-right li{
+    float: left;
+    height: 60px;
+
+}
+
+.top-right a{
+    padding-left: 8px;
+    padding-right: 8px;
+    border-left: 2px solid #d3bdbd83;
+}
+
+.header-middle{
+    width: 100%;
+    height: 200px;
+
+}
+
+.header-middle img{
+    width:100%;
+    height: 200px;
+}
+
+.header-bottom{
+    width:100%;
+    height:30px;
+    background-color: rgb(47, 143, 233);
+}
+
+.header-bottom li{
+    float: left;
+    color:white
+}
+
+.bottom-left{
+    float: left;
+    margin-top:3px;
+}
+
+.bottom-right{
+    float: right;
+    margin-top: 3px;
+}
+
+.sousuo{
+    margin-left: -30px;
+    margin-right: 20px;
+    letter-spacing: 2px;
+}
+
+.btn0{
+    background-color:skyblue
+}
+.btn1{
+    background-color:rgb(47, 143, 233);
+    height: 24px;
+    margin-top: -1px;
+}
+
+.btn1:hover{
+    background-color: skyblue
+}
+.btn2:hover{
+    background-color: skyblue
+}
+.btn2{
+    background-color:rgb(47, 143, 233);
+    height: 24px;
+}
+
+
+
+
+.rectange{
+    width:1000px;
+    height:140px;
+    background-color:white;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.rectange0{
+    background-image: url(../image/icon-7.png);
+}
+.rectange1{
+    background-image: url(../image/icon-8.png);
+}
+
+.rectange2{
+
+    background-image: url(../image/icon-9.png);
+}
+
+.rectange3{
+    background-image: url(../image/icon-7.png);
+}
+
+.rectange4{
+    background-image: url(../image/icon-8.png);
+}
+
+.input-search input{
+    background-image: url(../image/icon-1.jpg);
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left:60px;
+    text-align: left;
+    letter-spacing: 5px;
+    margin-right: 10px;
+}
+
+.rectange .rectange-left{
+    padding-top: 20px;
+    padding-left: 50px;
+    width: 150px;
+}
+.rectange .rectange-left  .text{
+    margin-left: -85px;
+    text-align: center;
+    font-size: 5px;
+}
+.rectange-right dl dt::before {
+    content:"";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+    
+.rectange-right{
+    padding-top: 15px;
+    padding-left: 30px;
+}
+.rectange-right dt{
+    font-size: 15px;
+    color: black;
+    font-family: "微软雅黑",sans-serif;
+}
+.rectange-right dd{
+    padding-bottom: 25px;
+    font-size: 13px;
+    color: #808080;
+}
+
+
+.reply{
+    color:rgb(218, 172, 55);
+    padding-left: 20px;
+}
+
+dt{
+    padding-left: 20px;
+}
+
+.text-black{
+    color:black;
+}
+
+
+.foot-text{
+    margin-top: 10px;
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(233, 229, 229);
+}
+
+.foot-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.friend-link{
+    margin-top: 10px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.friend-link div{
+    float:left;
+    margin-left: 10px;
+}
+
+
+
+.about-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.address{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foot-text span{
+    padding-left: 10px;
+    color: skyblue
+}
+
+.about-us a{
+    color: skyblue
+}
+
+.lianjie{
+    color: skyblue
+}
+
+.title-img{
+    width: 180px;
+    height: 50px;
+}

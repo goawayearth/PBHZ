@@ -13,4 +13,17 @@
         <servlet-name>homePage</servlet-name>
         <url-pattern>/homePage</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>checkLogin</servlet-name>
+        <servlet-class>com.tml.web.CheckLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>checkLogin</servlet-name>
+        <url-pattern>/checkLogin</url-pattern>
+    </servlet-mapping>
+
+
+
+
 </web-app>
