@@ -4,7 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>注册页面</title>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            // 页面加载完成之后
+
+            // 获取用户名输入框
+            var usernameInput = document.getElementById("username");
+            // 注册失去焦点事件
+            usernameInput.addEventListener("input", function () {
+                // 获取用户名
+                var username = this.value;
+                // 获取显示错误信息的元素
+                var errorMsgSpan = document.getElementById("error");
+                console.log(typeof (username));
+                if(username == null || username == ""){
+                    errorMsgSpan.innerText="用户名不能为空！";
+                }
+                else{
+                // 创建XMLHttpRequest对象
+                var xhr = new XMLHttpRequest();
+                // 设置请求方法和URL
+                xhr.open("GET", "http://localhost:8080/Pbhz/checkUsername?action=ajaxExistsUsername&username=" + username, true);
+                // 注册回调函数
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // 解析JSON数据
+                        var data = JSON.parse(xhr.responseText);
+
+
+
+                        if (data.existsUsername) {
+                            errorMsgSpan.innerText = "用户名已存在！";
+                        } else {
+                            errorMsgSpan.innerText = "用户名可用！";
+                        }
+                    }
+                }};
+                // 发送请求
+                xhr.send();
+            });
+        })
+
+
+    </script>
+
     <style>
+        .error{
+            color:red;
+        }
+
         body {
             background-color: #f2f2f2;
             font-family: Arial;
@@ -52,7 +101,9 @@
 </head>
 <body>
     <h1>注册</h1>
+
     <form action="/Pbhz/registerServlet" method="get">
+        <div class="error" id="error"></div>
         <label for="username">用户名:</label><br>
         <input type="text" id="username" name="username"><br>
         <label for="password">密码:</label><br>
