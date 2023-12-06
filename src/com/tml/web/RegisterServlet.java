@@ -11,13 +11,13 @@ import java.io.IOException;
 
 @WebServlet(name = "registerServlet")
 public class RegisterServlet extends HttpServlet {
-    private RegisterServiceImpl registerServer = new RegisterServiceImpl();
+    private RegisterServiceImpl registerService = new RegisterServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        String result = registerServer.createUser(username,password);
+        String result = registerService.createUser(username,password);
         if(!result.equals("success")){
             response.sendRedirect("login/register.html");
         }

@@ -5,126 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>注册页面</title>
 
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-            // 页面加载完成之后
-
-            // 获取用户名输入框
-            var usernameInput = document.getElementById("username");
-            // 注册失去焦点事件
-            usernameInput.addEventListener("input", function () {
-                // 获取用户名
-                var username = this.value;
-                // 获取显示错误信息的元素
-                var errorMsgSpan = document.getElementById("error");
-                console.log(typeof (username));
-                if(username == null || username == ""){
-                    errorMsgSpan.innerText="用户名不能为空！";
-                }
-                else{
-                // 创建XMLHttpRequest对象
-                var xhr = new XMLHttpRequest();
-                // 设置请求方法和URL
-                xhr.open("GET", "http://localhost:8080/Pbhz/checkUsername?action=ajaxExistsUsername&username=" + username, true);
-                // 注册回调函数
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // 解析JSON数据
-                        var data = JSON.parse(xhr.responseText);
-
-
-
-                        if (data.existsUsername) {
-                            errorMsgSpan.innerText = "用户名已存在！";
-                        } else {
-                            errorMsgSpan.innerText = "用户名可用！";
-                        }
-                    }
-                }};
-                // 发送请求
-                xhr.send();
-            });
-
-            // 获取密码输入框
-            var passwordInput = document.getElementById("password");
-
-            // 注册输入事件
-            passwordInput.addEventListener("input", function () {
-                // 获取密码
-                var password = this.value;
-
-                // 创建正则表达式对象，用于检查密码格式
-                var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,12}$/;
-                console.log("11")
-
-                // 检查密码是否符合格式
-                if (!passwordPattern.test(password)) {
-                    console.log("22")
-                    // 密码不符合格式，显示错误信息
-                    document.getElementById("error").innerText = "密码必须包含数字和字母，并且长度为5到12位。";
-                } else {
-                    console.log("33")
-                    // 密码符合格式，清空错误信息
-                    document.getElementById("error").innerText = "";
-                }
-            });
-
-        });
-
-
-
-
-    </script>
-
-    <style>
-        .error{
-            color:red;
-        }
-
-        body {
-            background-color: #f2f2f2;
-            font-family: Arial;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        form {
-            width: 300px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            border: none;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-    </style>
 </head>
 <body>
     <h1>注册</h1>
@@ -137,6 +17,12 @@
         <input type="password" id="password" name="password"><br><br>
 
         <input type="submit" value="注册">
+        <div class="login">
+            <a href="login.html">已有账号？登录</a>
+        </div>
     </form>
+
+    <script src="../js/register.js"></script>
+
 </body>
 </html>

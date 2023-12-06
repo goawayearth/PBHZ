@@ -225,7 +225,7 @@ body{
 .rectange .rectange-left  .text{
     margin-left: -85px;
     text-align: center;
-    font-size: 5px;
+    font-size: 10px;
 }
 .rectange-right dl dt::before {
     content:"";

@@ -15,7 +15,7 @@ public class LoginServlet extends HttpServlet {
 
     private String password = null;
     private String username = null;
-    private LoginServiceImpl loginServer = new LoginServiceImpl();
+    private LoginServiceImpl loginService = new LoginServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 
         /* 从数据库中找出该id的对应的pwd，比较是否一样 */
 
-        String result = loginServer.userLogin(username,password);
+        String result = loginService.userLogin(username,password);
         if(result.equals("success")){
             //得到session
             HttpSession session = request.getSession();
