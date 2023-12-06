@@ -23,7 +23,7 @@ public class UserDAO {
         ResultSet resultSet = null;
 
         try{
-            connection = JdbcUtil.getUserConnection();
+            connection = JdbcUtil.getConnection();
             if(connection==null){
                 System.out.println("connect is null");
             }
@@ -53,7 +53,7 @@ public class UserDAO {
         Connection connection = null;
         PreparedStatement pstmt = null;
         try {
-            connection = JdbcUtil.getUserConnection();
+            connection = JdbcUtil.getConnection();
             pstmt = (PreparedStatement) connection.prepareStatement(sql);
             pstmt.setString(1,username);
             pstmt.setString(2,password);

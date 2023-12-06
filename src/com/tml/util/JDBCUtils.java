@@ -1,14 +1,18 @@
 package com.tml.util;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
-public class JdbcUtil {
+public class JDBCUtils {
 
     public static DataSource ds;
 
@@ -52,37 +56,27 @@ public class JdbcUtil {
         return ds.getConnection();
     }
 
-    //关闭的方法
-    public static void close(PreparedStatement pstmt){
-        if(pstmt != null){						//避免出现空指针异常
-            try{
-                pstmt.close();
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
 
+    /**
+     *
+     *  关闭数据库的连接
+     * @param set
+     * @param connection
+     * @param statement
+     * @throws SQLException
+     */
+    public static void close(ResultSet set, Connection connection, Statement statement) throws SQLException {
+        if(set != null) {
+            set.close();
+        }
+
+        if(connection != null){
+            connection.close();
+        }
+
+        if(statement != null) {
+            statement.close();
         }
     }
-
-    public static void close(Connection conn){
-        if(conn != null){
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void close(ResultSet rs){
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
 }
+
