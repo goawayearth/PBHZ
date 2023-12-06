@@ -17,7 +17,8 @@ public class JdbcUtil {
         /**
          *  利用反射获取类加载器,以此来得到加载项目中的其他文件
          */
-        InputStream resourceAsStream = JDBCUtils.class.getClassLoader().getResourceAsStream("druid.properties");
+        InputStream resourceAsStream = JdbcUtil.class.getClassLoader().getResourceAsStream("druid.properties");
+
         try {
             // 加载配置文件 druid.properties
             properties.load(resourceAsStream);
