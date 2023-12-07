@@ -21,7 +21,7 @@ public class RegisterServlet extends HttpServlet {
         if(!result.equals("success")){
             response.sendRedirect("login/register.html");
         }
-        response.sendRedirect("home.html");
+        response.sendRedirect("login/login.html");
 
     }
 

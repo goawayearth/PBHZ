@@ -39,7 +39,7 @@ window.onload = function(){
                     var data = JSON.parse(xhr.responseText);
                     console.log(data)
                     if(data.fin == "ok"){
-                        document.getElementById("error").innerText = "账号或密码错误"+username+"&"+password;
+                        document.getElementById("error").innerText = "账号或密码错误";
                         document.getElementById("username").innerText="";
                         document.getElementById("password").innerText="";
                         document.getElementById('inputCode').value = '';

@@ -42,5 +42,14 @@
         <url-pattern>/checkUsername</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>homeLoadServlet</servlet-name>
+        <servlet-class>com.tml.web.HomeLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>homeLoadServlet</servlet-name>
+        <url-pattern>/homeLoadServlet</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
