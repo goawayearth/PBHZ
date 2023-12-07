@@ -1,5 +1,6 @@
 package com.tml.web;
 
+import com.google.gson.Gson;
 import com.tml.service.impl.LoginServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(name="loginServlet")
 public class LoginServlet extends HttpServlet {
@@ -26,6 +29,7 @@ public class LoginServlet extends HttpServlet {
         username = request.getParameter("username");
         password = request.getParameter("password");
 
+
         /* 从数据库中找出该id的对应的pwd，比较是否一样 */
 
         String result = loginService.userLogin(username,password);
@@ -37,10 +41,20 @@ public class LoginServlet extends HttpServlet {
             //将用户名存入session
             session.setAttribute("username",username);
 
-            response.sendRedirect("home.html");
+            String  path = "http://localhost:8080/Pbhz/home.html";
+            Map<String,Object> resultMap = new HashMap<>();
+            resultMap.put("path",path);
+            Gson gson = new Gson();
+            String json = gson.toJson(resultMap);
+            response.getWriter().write(json);
         }
         else{
-            response.sendRedirect("login/login.html");
+            String fin = "ok";
+            Map<String,Object> resultMap = new HashMap<>();
+            resultMap.put("fin",fin);
+            Gson gson = new Gson();
+            String json = gson.toJson(resultMap);
+            response.getWriter().write(json);
         }
 
     }
