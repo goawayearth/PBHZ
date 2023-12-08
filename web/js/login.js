@@ -48,6 +48,7 @@ window.onload = function(){
                     else{
                         document.getElementById("error").inner = "正确";
                         var path = String(data.path);
+                        path = path+"?username="+username;
                         window.location.href = path;
                     }
                 }

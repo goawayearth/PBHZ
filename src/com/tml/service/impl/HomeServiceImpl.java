@@ -72,4 +72,9 @@ public class HomeServiceImpl implements HomeService {
         return commentDAO.check_qid(qid);
 
     }
+
+    @Override
+    public List<Question> searchQuestion(String key) throws SQLException {
+        return questionDAO.check_key(key);
+    }
 }

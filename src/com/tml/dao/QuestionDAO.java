@@ -75,5 +75,41 @@ public class QuestionDAO {
 
     }
 
+    public List<Question> check_key(String key) throws SQLException {
+        // 通过关键词搜索
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Question> questions = new ArrayList<>();
+
+        String sql = "SELECT * FROM question WHERE content LIKE ?";
+        try{
+            connection = JdbcUtil.getConnection();
+            if(connection == null){
+                System.out.println("connect is null");
+            }
+            preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
+            preparedStatement.setString(1,'%'+key+'%');
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Question question = new Question();
+                question.setQid(resultSet.getString("qid"));
+                question.setContent(resultSet.getString("content"));
+                question.setDate(resultSet.getTimestamp("date"));
+                question.setType(resultSet.getString("type"));
+                question.setNum(resultSet.getInt("num"));
+                question.setName(resultSet.getString("name"));
+
+                questions.add(question);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return questions;
+    }
+
 
 }

@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name="homeLoadServlet")
@@ -93,6 +94,14 @@ public class HomeLoadServlet extends HttpServlet {
     protected void updateOther(HttpServletRequest request,HttpServletResponse response) throws IOException {
         List<Question> other = homeService.otherContent();
         String json = gson.toJson(other);
+        response.getWriter().write(json);
+    }
+
+    protected void searchKey(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException {
+        String key = request.getParameter("key");
+        List<Question> questions = homeService.searchQuestion(key);
+
+        String json = gson.toJson(questions);
         response.getWriter().write(json);
     }
 

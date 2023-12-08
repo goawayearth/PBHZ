@@ -18,6 +18,7 @@ public interface HomeService {
 
     public Question getQuestionByQid(String qid) throws SQLException;
     public List<Comment> getCommentsByQid(String qid) throws SQLException;
+    public List<Question> searchQuestion(String key) throws SQLException;
 
 
 

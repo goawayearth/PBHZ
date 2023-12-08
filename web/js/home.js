@@ -1,5 +1,13 @@
 window.onload = function(){
 
+    // example.html
+
+// 获取URL参数
+    let urlSearchParams = new URLSearchParams(window.location.search);
+    let name = urlSearchParams.get('username');
+    if(name == null)window.location.href="http://localhost:8080/Pbhz/login/login.html";
+    document.getElementById("login-name").innerHTML = "<a class='login-name' href='person.jsp?username="+name+"'>"+name+"</a>";
+// 现在你可以根据需要使用param1和param2
     loadHomePage();
 
     document.getElementById("home").onclick = function(){
@@ -261,6 +269,37 @@ window.onload = function(){
 
             })
             .catch(error => console.error('error:',error));
+    }
+
+    document.getElementById("search-button").onclick = function (){
+        addContent();
+        let key = document.getElementById("search-key").value;
+        console.log(key)
+        if(key===""){
+            loadHomePage();
+        }
+        fetch("http://localhost:8080/Pbhz/homeLoadServlet?action=searchKey&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+                //处理数据
+                let html = "";
+                //处理返回的内容
+                for(let d of data){
+                    let single = "<br>"+
+                        "<div class='name'>"+d.name+" :</div>" +
+                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
+                        "<div><span class='theme'>#"+d.type+"#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
+                        "<br><hr>";
+
+                    html+=single;
+                }
+
+                document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+
+            })
+            .catch(error => console.error('error:',error));
+        return false;
     }
 
 }

@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+a{
+    color: black;
+}
+
 body{
     background-color: rgb(233, 229, 229);
 }
@@ -337,4 +341,16 @@ form{
 .num{
     color: #999999;
     margin-bottom: 10px;
+}
+
+.login-name{
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white;
+    cursor: pointer;
+}
+.login-name:hover{
+    background-color: skyblue;
+
 }
