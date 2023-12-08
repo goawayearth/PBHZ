@@ -71,7 +71,7 @@ body{
     font-size: 15px;
 }
 .active {
-    background-color: skyblue; 
+    background-color: skyblue;
     padding-left: 5px;
  }
 .topbar-nav .list li:first-child a{
@@ -293,4 +293,16 @@ form{
 }
 
     
-/* #endregion 底部end*/  
+
+.main-content{
+    display: flex;
+    justify-content: center;
+}
+
+.otherPage{
+    width: 1028px;
+    height:500px;
+    background-color: white;
+    margin-top:10px;
+    border-radius: 1%;
+}
