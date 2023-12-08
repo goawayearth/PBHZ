@@ -34,7 +34,7 @@ window.onload = function(){
                 //处理返回的内容
                 for(let d of data){
                     let single ="<div class='name'>"+d.name+"</div>" +
-                        "<div class='cont'>"+d.content+"</div>" +
+                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#help#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
                         "<br><hr><br>";
 
@@ -70,7 +70,7 @@ window.onload = function(){
                 for(let d of data){
                     let single ="<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
-                        "<div class='cont'>"+d.content+"</div>" +
+                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#learn#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
                         "<br><hr>";
 
@@ -106,7 +106,7 @@ window.onload = function(){
                 for(let d of data){
                     let single = "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
-                        "<div class='cont'>"+d.content+"</div>" +
+                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#psychogical#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
                         "<br><hr>";
 
@@ -143,7 +143,7 @@ window.onload = function(){
                 for(let d of data){
                     let single = "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
-                        "<div class='cont'>"+d.content+"</div>" +
+                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#health#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
                         "<br><hr>";
 
@@ -179,7 +179,7 @@ window.onload = function(){
                 for(let d of data){
                     let single = "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
-                        "<div class='cont'>"+d.content+"</div>" +
+                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#law#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
                         "<br><hr>";
 
@@ -215,7 +215,7 @@ window.onload = function(){
                 for(let d of data){
                     let single ="<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
-                        "<div class='cont'>"+d.content+"</div>" +
+                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#job#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
                         "<br><hr>";
 
@@ -250,7 +250,7 @@ window.onload = function(){
                 for(let d of data){
                     let single = "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
-                        "<div class='cont'>"+d.content+"</div>" +
+                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#other#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
                         "<br><hr>";
 
@@ -284,7 +284,7 @@ function loadHomePage(){
                 "                <dl>\n" +
                 "                    <a href='reply.jsp?id="+data[0].qid +"'><dt id=\"learn1-content\"></dt></a>\n" +
                 "                    <dd>发表于:<span id=\"learn1-date\"></span> .<span id=\"learn1-num\"></span>个回复 </dd>\n" +
-                "                    <a href='http://localhost:8080/Pbhz/replyPageServlet?id="+data[1].qid +"'><dt id=\"learn2-content\"></dt></a>\n" +
+                "                    <a href='reply.jsp?id="+data[1].qid +"'><dt id=\"learn2-content\"></dt></a>\n" +
                 "                    <dd> 发表于:<span id=\"learn2-date\"></span> .<span id=\"learn2-num\"></span>个回复 </dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
@@ -298,9 +298,9 @@ function loadHomePage(){
                 "            <!-- 右侧文字 -->\n" +
                 "            <div class=\"right-content\">\n" +
                 "                <dl>\n" +
-                "                    <a href='http://localhost:8080/Pbhz/replyPageServlet?id="+data[2].qid +"'><dt id=\"psychogical1-content\"></dt></a>\n" +
+                "                    <a href='reply.jsp?id="+data[2].qid +"'><dt id=\"psychogical1-content\"></dt></a>\n" +
                 "                    <dd>发表于:<span id=\"psychogical1-date\"></span> .<span id=\"psychogical1-num\"></span> 个回复</dd>\n" +
-                "                    <a href='http://localhost:8080/Pbhz/replyPageServlet?id="+data[3].qid +"'><dt id=\"psychogical2-content\"></dt></a>\n" +
+                "                    <a href='reply.jsp?id="+data[3].qid +"'><dt id=\"psychogical2-content\"></dt></a>\n" +
                 "                    <dd>发表于:<span id=\"psychogical2-date\"></span> .<span id=\"psychogical2-num\"></span> 个回复</dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
@@ -314,9 +314,9 @@ function loadHomePage(){
                 "            <!-- 右侧文字 -->\n" +
                 "            <div class=\"right-content\">\n" +
                 "                <dl>\n" +
-                "                    <a href='http://localhost:8080/Pbhz/replyPageServlet?id="+data[4].qid +"'><dt id=\"health1-content\"></dt></a>\n" +
+                "                    <a href='reply.jsp?id="+data[4].qid +"'><dt id=\"health1-content\"></dt></a>\n" +
                 "                    <dd>发表于:<span id=\"health1-date\"></span> .<span id=\"health1-num\"></span>个回复</dd>\n" +
-                "                    <a href='http://localhost:8080/Pbhz/replyPageServlet?id="+data[5].qid +"'><dt id=\"health2-content\"></dt></a>\n" +
+                "                    <a href='reply.jsp?id="+data[5].qid +"'><dt id=\"health2-content\"></dt></a>\n" +
                 "                    <dd>发表于:<span id=\"health2-date\"></span> .<span id=\"health2-num\"></span>个回复</dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
@@ -330,9 +330,9 @@ function loadHomePage(){
                 "            <!-- 右侧文字 -->\n" +
                 "            <div class=\"right-content\">\n" +
                 "                <dl>\n" +
-                "                    <a href='http://localhost:8080/Pbhz/replyPageServlet?id="+data[6].qid +"'><dt id=\"law1-content\"></dt></a>\n" +
+                "                    <a href='reply.jsp?id="+data[6].qid +"'><dt id=\"law1-content\"></dt></a>\n" +
                 "                    <dd>发表于:<span id=\"law1-date\"></span> .<span id=\"law1-num\"></span>个回复</dd>\n" +
-                "                    <a href='http://localhost:8080/Pbhz/replyPageServlet?id="+data[7].qid +"'><dt id=\"law2-content\"></dt></a>\n" +
+                "                    <a href='reply.jsp?id="+data[7].qid +"'><dt id=\"law2-content\"></dt></a>\n" +
                 "                    <dd>发表于:<span id=\"law2-date\"></span> .<span id=\"law2-num\"></span>个回复</dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
@@ -346,9 +346,9 @@ function loadHomePage(){
                 "            <!-- 右侧文字 -->\n" +
                 "            <div class=\"right-content\">\n" +
                 "                <dl>\n" +
-                "                    <a href='http://localhost:8080/Pbhz/replyPageServlet?id="+data[8].qid +"'><dt id=\"job1-content\"></dt></a>\n" +
+                "                    <a href='reply.jsp?id="+data[8].qid +"'><dt id=\"job1-content\"></dt></a>\n" +
                 "                    <dd>发表于:<span id=\"job1-date\"></span> .<span id=\"job1-num\"></span>个回复</dd>\n" +
-                "                    <a href='http://localhost:8080/Pbhz/replyPageServlet?id="+data[9].qid +"'><dt id=\"job2-content\"></dt></a>\n" +
+                "                    <a href='reply.jsp?id="+data[9].qid +"'><dt id=\"job2-content\"></dt></a>\n" +
                 "                    <dd>发表于:<span id=\"job2-date\"></span> .<span id=\"job2-num\"></span>个回复</dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
