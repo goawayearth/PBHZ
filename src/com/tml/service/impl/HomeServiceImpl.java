@@ -1,14 +1,20 @@
 package com.tml.service.impl;
 
+import com.tml.bean.Comment;
 import com.tml.bean.Question;
+import com.tml.dao.CommentDAO;
 import com.tml.dao.QuestionDAO;
 import com.tml.service.HomeService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeServiceImpl implements HomeService {
+
     private QuestionDAO questionDAO = new QuestionDAO();
+    private CommentDAO commentDAO = new CommentDAO();
+
     @Override
     public List<Question> mainContent() {
 
@@ -54,5 +60,16 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public List<Question> otherContent() {
         return questionDAO.check_type("other");
+    }
+
+    @Override
+    public Question getQuestionByQid(String qid) throws SQLException {
+        return questionDAO.check_id(qid);
+    }
+
+    @Override
+    public List<Comment> getCommentsByQid(String qid) throws SQLException {
+        return commentDAO.check_qid(qid);
+
     }
 }
