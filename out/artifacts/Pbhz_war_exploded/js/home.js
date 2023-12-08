@@ -25,6 +25,27 @@ window.onload = function(){
         document.getElementById("job").style.backgroundColor = "transparent";
         document.getElementById("other").style.backgroundColor = "transparent";
 
+        //进行异步请求
+        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateHelp')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let html = "";
+                //处理返回的内容
+                for(let d of data){
+                    let single ="<div class='name'>"+d.name+"</div>" +
+                        "<div class='cont'>"+d.content+"</div>" +
+                        "<div><span class='theme'>#help#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
+                        "<br><hr><br>";
+
+                    html+=single;
+                }
+
+                document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+            })
+            .catch(error => console.error('error:',error));
+
     }
 
     document.getElementById("learn").onclick = function(){
@@ -37,6 +58,30 @@ window.onload = function(){
         document.getElementById("law").style.backgroundColor = "transparent";
         document.getElementById("job").style.backgroundColor = "transparent";
         document.getElementById("other").style.backgroundColor = "transparent";
+
+        //进行异步请求
+        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateLearn')
+            .then(response => response.json())
+            .then(data => {
+
+                //处理返回的内容
+                let html = "";
+                //处理返回的内容
+                for(let d of data){
+                    let single ="<br>"+
+                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='cont'>"+d.content+"</div>" +
+                        "<div><span class='theme'>#learn#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
+                        "<br><hr>";
+
+                    html+=single;
+                }
+
+                document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+
+            })
+            .catch(error => console.error('error:',error));
     }
 
     document.getElementById("psychogical").onclick = function(){
@@ -49,6 +94,30 @@ window.onload = function(){
         document.getElementById("law").style.backgroundColor = "transparent";
         document.getElementById("job").style.backgroundColor = "transparent";
         document.getElementById("other").style.backgroundColor = "transparent";
+
+        //进行异步请求
+        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updatePsychogical')
+            .then(response => response.json())
+            .then(data => {
+                //处理返回的内容
+                //处理返回的内容
+                let html = "";
+                //处理返回的内容
+                for(let d of data){
+                    let single = "<br>"+
+                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='cont'>"+d.content+"</div>" +
+                        "<div><span class='theme'>#psychogical#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
+                        "<br><hr>";
+
+                    html+=single;
+                }
+
+                document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+
+            })
+            .catch(error => console.error('error:',error));
 
     }
 
@@ -63,6 +132,29 @@ window.onload = function(){
         document.getElementById("job").style.backgroundColor = "transparent";
         document.getElementById("other").style.backgroundColor = "transparent";
 
+        //进行异步请求
+        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateHealth')
+            .then(response => response.json())
+            .then(data => {
+                //处理返回的内容
+                //处理返回的内容
+                let html = "";
+                //处理返回的内容
+                for(let d of data){
+                    let single = "<br>"+
+                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='cont'>"+d.content+"</div>" +
+                        "<div><span class='theme'>#health#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
+                        "<br><hr>";
+
+                    html+=single;
+                }
+
+                document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+            })
+            .catch(error => console.error('error:',error));
+
     }
 
     document.getElementById("law").onclick = function(){
@@ -75,6 +167,29 @@ window.onload = function(){
         document.getElementById("law").style.backgroundColor = "skyblue";
         document.getElementById("job").style.backgroundColor = "transparent";
         document.getElementById("other").style.backgroundColor = "transparent";
+
+        //进行异步请求
+        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateLaw')
+            .then(response => response.json())
+            .then(data => {
+                //处理返回的内容
+                //处理返回的内容
+                let html = "";
+                //处理返回的内容
+                for(let d of data){
+                    let single = "<br>"+
+                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='cont'>"+d.content+"</div>" +
+                        "<div><span class='theme'>#law#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
+                        "<br><hr>";
+
+                    html+=single;
+                }
+
+                document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+            })
+            .catch(error => console.error('error:',error));
 
     }
 
@@ -89,6 +204,28 @@ window.onload = function(){
         document.getElementById("job").style.backgroundColor = "skyblue";
         document.getElementById("other").style.backgroundColor = "transparent";
 
+        //进行异步请求
+        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateJob')
+            .then(response => response.json())
+            .then(data => {
+                //处理返回的内容
+                //处理返回的内容
+                let html = "";
+                //处理返回的内容
+                for(let d of data){
+                    let single ="<br>"+
+                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='cont'>"+d.content+"</div>" +
+                        "<div><span class='theme'>#job#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
+                        "<br><hr>";
+
+                    html+=single;
+                }
+
+                document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+            })
+            .catch(error => console.error('error:',error));
 
     }
     document.getElementById("other").onclick = function (){
@@ -101,6 +238,29 @@ window.onload = function(){
         document.getElementById("law").style.backgroundColor = "transparent";
         document.getElementById("job").style.backgroundColor = "transparent";
         document.getElementById("other").style.backgroundColor = "skyblue";
+
+        //进行异步请求
+        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateOther')
+            .then(response => response.json())
+            .then(data => {
+                //处理返回的内容
+                //处理返回的内容
+                let html = "";
+                //处理返回的内容
+                for(let d of data){
+                    let single = "<br>"+
+                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='cont'>"+d.content+"</div>" +
+                        "<div><span class='theme'>#other#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
+                        "<br><hr>";
+
+                    html+=single;
+                }
+
+                document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+            })
+            .catch(error => console.error('error:',error));
     }
 
 }
@@ -116,10 +276,10 @@ function loadHomePage(){
             "            <!-- 右侧文字 -->\n" +
             "            <div class=\"right-content\">\n" +
             "                <dl>\n" +
-            "                    <dt id=\"learn1-content\"></dt>\n" +
-            "                    <dd>发表于:<span id=\"learn1-date\"></span> .<span id=\"learn1-num\"></span>个回复 <a href=\"#\"  style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
-            "                    <dt id=\"learn2-content\"></dt>\n" +
-            "                    <dd> 发表于:<span id=\"learn2-date\"></span> .<span id=\"learn2-num\"></span>个回复 <a href=\"#\" style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
+            "                    <a href='http://www.baidu.com'><dt id=\"learn1-content\"></dt></a>\n" +
+            "                    <dd>发表于:<span id=\"learn1-date\"></span> .<span id=\"learn1-num\"></span>个回复 </dd>\n" +
+            "                    <a href='http://www.baidu.com'><dt id=\"learn2-content\"></dt></a>\n" +
+            "                    <dd> 发表于:<span id=\"learn2-date\"></span> .<span id=\"learn2-num\"></span>个回复 </dd>\n" +
             "                </dl>\n" +
             "            </div>\n" +
             "        </div>\n" +
@@ -133,9 +293,9 @@ function loadHomePage(){
             "            <div class=\"right-content\">\n" +
             "                <dl>\n" +
             "                    <dt id=\"psychogical1-content\"></dt>\n" +
-            "                    <dd>发表于:<span id=\"psychogical1-date\"></span> .<span id=\"psychogical1-num\"></span> 个回复<a href=\"#\" style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
+            "                    <dd>发表于:<span id=\"psychogical1-date\"></span> .<span id=\"psychogical1-num\"></span> 个回复</dd>\n" +
             "                    <dt id=\"psychogical2-content\"></dt>\n" +
-            "                    <dd>发表于:<span id=\"psychogical2-date\"></span> .<span id=\"psychogical2-num\"></span> 个回复<a href=\"#\" style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
+            "                    <dd>发表于:<span id=\"psychogical2-date\"></span> .<span id=\"psychogical2-num\"></span> 个回复</dd>\n" +
             "                </dl>\n" +
             "            </div>\n" +
             "        </div>\n" +
@@ -149,9 +309,9 @@ function loadHomePage(){
             "            <div class=\"right-content\">\n" +
             "                <dl>\n" +
             "                    <dt id=\"health1-content\"></dt>\n" +
-            "                    <dd>发表于:<span id=\"health1-date\"></span> .<span id=\"health1-num\"></span>个回复<a href=\"#\" style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
+            "                    <dd>发表于:<span id=\"health1-date\"></span> .<span id=\"health1-num\"></span>个回复</dd>\n" +
             "                    <dt id=\"health2-content\"></dt>\n" +
-            "                    <dd>发表于:<span id=\"health2-date\"></span> .<span id=\"health2-num\"></span>个回复<a href=\"#\" style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
+            "                    <dd>发表于:<span id=\"health2-date\"></span> .<span id=\"health2-num\"></span>个回复</dd>\n" +
             "                </dl>\n" +
             "            </div>\n" +
             "        </div>\n" +
@@ -165,9 +325,9 @@ function loadHomePage(){
             "            <div class=\"right-content\">\n" +
             "                <dl>\n" +
             "                    <dt id=\"law1-content\"></dt>\n" +
-            "                    <dd>发表于:<span id=\"law1-date\"></span> .<span id=\"law1-num\"></span>个回复<a href=\"#\" style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
+            "                    <dd>发表于:<span id=\"law1-date\"></span> .<span id=\"law1-num\"></span>个回复</dd>\n" +
             "                    <dt id=\"law2-content\"></dt>\n" +
-            "                    <dd>发表于:<span id=\"law2-date\"></span> .<span id=\"law2-num\"></span>个回复<a href=\"#\" style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
+            "                    <dd>发表于:<span id=\"law2-date\"></span> .<span id=\"law2-num\"></span>个回复</dd>\n" +
             "                </dl>\n" +
             "            </div>\n" +
             "        </div>\n" +
@@ -181,9 +341,9 @@ function loadHomePage(){
             "            <div class=\"right-content\">\n" +
             "                <dl>\n" +
             "                    <dt id=\"job1-content\"></dt>\n" +
-            "                    <dd>发表于:<span id=\"job1-date\"></span> .<span id=\"job1-num\"></span>个回复<a href=\"#\" style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
+            "                    <dd>发表于:<span id=\"job1-date\"></span> .<span id=\"job1-num\"></span>个回复</dd>\n" +
             "                    <dt id=\"job2-content\"></dt>\n" +
-            "                    <dd>发表于:<span id=\"job2-date\"></span> .<span id=\"job2-num\"></span>个回复<a href=\"#\" style=\"margin-left: 25px;color: orange;\">回复</a></dd>\n" +
+            "                    <dd>发表于:<span id=\"job2-date\"></span> .<span id=\"job2-num\"></span>个回复</dd>\n" +
             "                </dl>\n" +
             "            </div>\n" +
             "        </div>";

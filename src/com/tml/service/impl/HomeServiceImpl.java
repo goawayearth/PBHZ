@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeServiceImpl implements HomeService {
+    private QuestionDAO questionDAO = new QuestionDAO();
     @Override
     public List<Question> mainContent() {
-        QuestionDAO questionDAO = new QuestionDAO();
+
         List<Question> home = new ArrayList<>();
         home.addAll(questionDAO.check_type("learning"));
         home.addAll(questionDAO.check_type("psychogical"));
@@ -18,5 +19,40 @@ public class HomeServiceImpl implements HomeService {
         home.addAll(questionDAO.check_type("law"));
         home.addAll(questionDAO.check_type("job"));
         return home;
+    }
+
+    @Override
+    public List<Question> helpContent() {
+        return questionDAO.check_type("help");
+    }
+
+    @Override
+    public List<Question> learnContent() {
+        return questionDAO.check_type("learning");
+    }
+
+    @Override
+    public List<Question> psychogicalContent() {
+        return questionDAO.check_type("psychogical");
+    }
+
+    @Override
+    public List<Question> healthContent() {
+        return questionDAO.check_type("health");
+    }
+
+    @Override
+    public List<Question> lawContent() {
+        return questionDAO.check_type("law");
+    }
+
+    @Override
+    public List<Question> jobContent() {
+        return questionDAO.check_type("job");
+    }
+
+    @Override
+    public List<Question> otherContent() {
+        return questionDAO.check_type("other");
     }
 }

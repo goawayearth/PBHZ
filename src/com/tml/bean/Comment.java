@@ -7,6 +7,15 @@ public class Comment {
     private String qid = null;
     private String content = null;
     private Date date = null;
+    private String name = null;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getCid() {
         return cid;

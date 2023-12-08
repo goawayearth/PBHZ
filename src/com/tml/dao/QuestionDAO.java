@@ -34,6 +34,7 @@ public class QuestionDAO {
                 question.setDate(resultSet.getTimestamp("date"));
                 question.setType(resultSet.getString("type"));
                 question.setNum(resultSet.getInt("num"));
+                question.setName(resultSet.getString("name"));
                 questions.add(question);
             }
         }

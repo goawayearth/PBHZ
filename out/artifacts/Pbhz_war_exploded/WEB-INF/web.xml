@@ -52,4 +52,16 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>replyPageServlet</servlet-name>
+        <servlet-class>com.tml.web.ReplyPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>replyPageServlet</servlet-name>
+        <url-pattern>/replyPageServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
 </web-app>

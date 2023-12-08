@@ -301,8 +301,40 @@ form{
 
 .otherPage{
     width: 1028px;
-    height:500px;
+    /*height:500px;*/
     background-color: white;
     margin-top:10px;
-    border-radius: 1%;
+    border-radius: 5px;
+
+}
+
+.name{
+    color: #6d8794;
+    margin-left:20px;
+    font-size: 16px;
+
+}
+
+.cont{
+    margin-top:5px;
+    margin-left:20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.theme{
+    color: #6d8794;
+    margin-left:20px;
+    font-size: 12px;
+}
+
+.date{
+    margin-left: 20px;
+    color: #999999;
+    font-size: 12px;
+}
+
+.num{
+    color: #999999;
+    margin-bottom: 10px;
 }

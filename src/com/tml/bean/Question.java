@@ -8,6 +8,15 @@ public class Question {
     private Date date = null;
     private int num = 0;
     private String type = null;
+    private String name = null;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public Date getDate() {
         return date;
