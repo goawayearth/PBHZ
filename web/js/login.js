@@ -38,7 +38,7 @@ window.onload = function(){
                 if(xhr.readyState === 4 && xhr.status === 200){
                     var data = JSON.parse(xhr.responseText);
                     console.log(data)
-                    if(data.fin == "ok"){
+                    if(data.fin === "ok"){
                         document.getElementById("error").innerText = "账号或密码错误";
                         document.getElementById("username").innerText="";
                         document.getElementById("password").innerText="";

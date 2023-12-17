@@ -306,7 +306,7 @@ form{
 .otherPage{
     width: 1028px;
     /*height:500px;*/
-    background-color: white;
+    background-color: rgb(233, 229, 229);
     margin-top:10px;
     border-radius: 5px;
 
@@ -353,4 +353,12 @@ form{
 .login-name:hover{
     background-color: skyblue;
 
+}
+
+.single-rect{
+    background-color: white;
+    width: 1028px;
+    height: 140px;
+    border-radius: 15px;
+    margin-top: 8px;
 }

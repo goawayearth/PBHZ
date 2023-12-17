@@ -41,10 +41,11 @@ window.onload = function(){
                 let html = "";
                 //处理返回的内容
                 for(let d of data){
-                    let single ="<div class='name'>"+d.name+"</div>" +
+                    let single ="<div class='single-rect'><br>"+
+                        "<div class='name'>"+d.name+"</div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#help#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
-                        "<br><hr><br>";
+                        "<br></div>";
 
                     html+=single;
                 }
@@ -76,11 +77,12 @@ window.onload = function(){
                 let html = "";
                 //处理返回的内容
                 for(let d of data){
-                    let single ="<br>"+
+                    let single ="<div class='single-rect'>"+
+                        "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#learn#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
-                        "<br><hr>";
+                        "<br></div>";
 
                     html+=single;
                 }
@@ -112,11 +114,12 @@ window.onload = function(){
                 let html = "";
                 //处理返回的内容
                 for(let d of data){
-                    let single = "<br>"+
+                    let single = "<div class='single-rect'>"+
+                        "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#psychogical#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
-                        "<br><hr>";
+                        "<br></div>";
 
                     html+=single;
                 }
@@ -149,11 +152,12 @@ window.onload = function(){
                 let html = "";
                 //处理返回的内容
                 for(let d of data){
-                    let single = "<br>"+
+                    let single = "<div class='single-rect'>"+
+                        "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#health#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
-                        "<br><hr>";
+                        "<br></div>";
 
                     html+=single;
                 }
@@ -185,11 +189,12 @@ window.onload = function(){
                 let html = "";
                 //处理返回的内容
                 for(let d of data){
-                    let single = "<br>"+
+                    let single = "<div class='single-rect'>"+
+                        "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#law#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
-                        "<br><hr>";
+                        "<br></div>";
 
                     html+=single;
                 }
@@ -221,11 +226,12 @@ window.onload = function(){
                 let html = "";
                 //处理返回的内容
                 for(let d of data){
-                    let single ="<br>"+
+                    let single = "<div class='single-rect'>"+
+                        "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#job#</span> <span class='date'>"+d.date+"</span> .<span class='num'>"+d.num+"</span><span class='num'>个评论</span></div>"+
-                        "<br><hr>";
+                        "<br></div>";
 
                     html+=single;
                 }
