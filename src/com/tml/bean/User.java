@@ -7,6 +7,15 @@ public class User {
 
     private String username = null;
     private String password = null;
+    private String iconPath = null;
+
+    public String getIconPath() {
+        return iconPath;
+    }
+
+    public void setIconPath(String iconPath) {
+        this.iconPath = iconPath;
+    }
 
     public User(){}
     public User(String username,String password){

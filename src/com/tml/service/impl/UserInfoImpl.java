@@ -7,8 +7,14 @@ import com.tml.service.UserInform;
 public class UserInfoImpl implements UserInform {
 
     @Override
-    public User getUser(String id) {
+    public void changeIcon(String username, String path) {
         UserDAO userDAO = new UserDAO();
-        return userDAO.check_id(id);
+        userDAO.updateUserIcon(username,path);
+    }
+
+    @Override
+    public User getUser(String username) {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.check_id(username);
     }
 }

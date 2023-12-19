@@ -32,8 +32,6 @@ public class CommentDAO {
             comment.setName(resultSet.getString("name"));
             comment.setFileName(resultSet.getString("filename"));
 
-
-
             comments.add(comment);
         }
         return comments;

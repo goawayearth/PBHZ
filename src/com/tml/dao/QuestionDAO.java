@@ -67,6 +67,7 @@ public class QuestionDAO {
                 question.setType(resultSet.getString("type"));
                 question.setNum(resultSet.getInt("num"));
                 question.setName(resultSet.getString("name"));
+                question.setFilepath(resultSet.getString("filepath"));
             }
         }
         catch(Exception e){
@@ -101,6 +102,7 @@ public class QuestionDAO {
                 question.setType(resultSet.getString("type"));
                 question.setNum(resultSet.getInt("num"));
                 question.setName(resultSet.getString("name"));
+                question.setFilepath(resultSet.getString("filepath"));
 
                 questions.add(question);
             }

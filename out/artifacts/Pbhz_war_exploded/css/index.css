@@ -344,11 +344,10 @@ form{
 }
 
 .login-name{
-    margin-right: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
     color: white;
     cursor: pointer;
+    background-color: skyblue;
+    height: 32px;
 }
 .login-name:hover{
     background-color: skyblue;
@@ -417,4 +416,11 @@ body {
 
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+.post{
+    background-color: skyblue;
+    margin-right: 10px;
+    color: white;
+    height: 32px;
 }

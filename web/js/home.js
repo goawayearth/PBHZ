@@ -7,7 +7,8 @@ window.onload = function(){
     let name = urlSearchParams.get('username');
     if(name == null)window.location.href="http://localhost:8080/Pbhz/login/login.html";
     document.getElementById("login-name").innerHTML = "<a class='login-name' href='person.jsp?username="+name+"'>"+name+"</a>";
-// 现在你可以根据需要使用param1和param2
+    document.getElementById("post").innerHTML = "<a class='post' href='post.jsp'>我要发表</a>";
+    // 现在你可以根据需要使用param1和param2
     loadHomePage();
 
     document.getElementById("home").onclick = function(){

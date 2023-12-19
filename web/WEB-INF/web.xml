@@ -59,4 +59,22 @@
         <url-pattern>/addReplyServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>changeIcon</servlet-name>
+        <servlet-class>com.tml.web.ChangeIcon</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changeIcon</servlet-name>
+        <url-pattern>/changeIcon</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>postServlet</servlet-name>
+        <servlet-class>com.tml.web.PostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>postServlet</servlet-name>
+        <url-pattern>/postServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

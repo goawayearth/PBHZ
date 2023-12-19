@@ -9,6 +9,15 @@ public class Question {
     private int num = 0;
     private String type = null;
     private String name = null;
+    private String filepath = null;
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
 
     public void setName(String name) {
         this.name = name;

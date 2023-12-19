@@ -36,8 +36,13 @@
             out.println(
                     "<br>"+
                             "<div class='name'>"+question.getName()+" :</div>" +
-                            "<div class='cont'>"+question.getContent()+"</div>" +
-                            "<div><span class='theme'>#"+question.getType()+"#</span> <span class='date'>"+
+                            "<div class='cont'>"+question.getContent()+"</div>" );
+            if(question.getFilepath()!=null)
+            {
+                out.println("<div><img class='commentImage1' src='" + question.getFilepath() + "' alt='Uploaded Image'></div>");
+            }
+
+            out.println(    "<div><span class='theme'>#"+question.getType()+"#</span> <span class='date'>发表于"+
                             question.getDate()+"</span></div>"+
                             "<br>"
             );

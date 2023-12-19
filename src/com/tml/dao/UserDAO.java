@@ -3,6 +3,10 @@ package com.tml.dao;
 import com.tml.bean.User;
 import com.tml.util.JdbcUtil;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,6 +39,7 @@ public class UserDAO {
                 user=new User();
                 user.setPassword(resultSet.getString("password"));
                 user.setUsername(resultSet.getString("username"));
+                user.setIconPath(resultSet.getString("icon"));
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -67,6 +72,47 @@ public class UserDAO {
             JdbcUtil.close(pstmt);
             JdbcUtil.close(connection);        //必须关闭
         }
+
+    }
+
+    public void updateUserIcon(String username,String path){
+        // 先找到原来的头像的名称，删掉图片
+        // 将新的头像的名称写道数据库中
+        User user = check_id(username);
+        String oldPath = user.getIconPath();
+        if(oldPath != null){
+            String filePath = "D:\\STUDY\\1Web\\web作业\\work3"+oldPath;
+
+            // 使用Paths.get()方法创建Path对象
+            Path path1 = Paths.get(filePath);
+
+            try {
+                // 使用Files.delete()方法删除文件
+                Files.delete(path1);
+                System.out.println("文件删除成功！");
+            } catch (IOException e) {
+                System.err.println("删除文件时出错：" + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        String sql2 = "UPDATE user SET icon=? WHERE username =? ;";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try{
+            connection = JdbcUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql2);
+            preparedStatement.setString(1,path);
+            preparedStatement.setString(2,username);
+            preparedStatement.executeUpdate();
+            System.out.println("头像修改成功");
+        }catch (Exception e){}
+        finally {
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(connection);
+        }
+
+
 
     }
 
