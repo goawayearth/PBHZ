@@ -15,10 +15,15 @@ public class HomeServiceImpl implements HomeService {
     private QuestionDAO questionDAO = new QuestionDAO();
     private CommentDAO commentDAO = new CommentDAO();
 
+    /**
+     * addAll方法是Collection接口的一部分，而 List接口继承自 Collection接口，
+     * addAll 方法，用于将另一个集合中的所有元素添加到当前列表中。
+     * @return
+     */
     @Override
     public List<Question> mainContent() {
-
         List<Question> home = new ArrayList<>();
+        //check_type函数返回一个列表
         home.addAll(questionDAO.check_type("learning"));
         home.addAll(questionDAO.check_type("psychogical"));
         home.addAll(questionDAO.check_type("health"));
@@ -77,4 +82,6 @@ public class HomeServiceImpl implements HomeService {
     public List<Question> searchQuestion(String key) throws SQLException {
         return questionDAO.check_key(key);
     }
+
+
 }

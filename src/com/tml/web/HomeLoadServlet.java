@@ -1,3 +1,5 @@
+//这是一个基于Java Servlet的后端代码，处理前端页面发起的不同请求，并返回相应的数据。
+
 package com.tml.web;
 
 import com.google.gson.Gson;
@@ -17,7 +19,11 @@ import java.util.List;
 @WebServlet(name="homeLoadServlet")
 public class HomeLoadServlet extends HttpServlet {
     private HomeServiceImpl homeService = new HomeServiceImpl();
+
+    //创建一个 Gson 对象，用于将 Java 对象转换为 JSON 格式的字符串，以便在响应中返回 JSON 数据
     private Gson gson = new Gson();
+
+    //@Override：这个注解表明该方法是对父类（HttpServlet）的方法进行重写。
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req,resp);
@@ -38,7 +44,10 @@ public class HomeLoadServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         try {
+
+            //通过反射机制获取与 "action" 参数对应的方法
             Method method = this.getClass().getDeclaredMethod(action,HttpServletRequest.class,HttpServletResponse.class);
+            //调用获取到的方法，即根据 "action" 参数调用不同的处理方法
             method.invoke(this,request,response);
         }
         catch (Exception e) {
@@ -46,6 +55,14 @@ public class HomeLoadServlet extends HttpServlet {
         }
     }
 
+    /**
+     * 接下来的一系列方法是处理不同请求的具体业务逻辑
+     * 例如 updateHome 处理主页更新请求，updateHelp 处理帮助类别的更新请求，依此类推。
+     * 这些方法调用相应的Service来获取数据，然后将数据转换为 JSON 格式并写入响应中。
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     protected void updateHome(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         List<Question> questions = homeService.mainContent();
@@ -97,8 +114,10 @@ public class HomeLoadServlet extends HttpServlet {
         response.getWriter().write(json);
     }
 
+    //从请求中获取名为 "key" 的参数，即搜索关键字。
     protected void searchKey(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException {
         String key = request.getParameter("key");
+        //调用 HomeServiceImpl 的 searchQuestion 方法，根据搜索关键字获取问题列表
         List<Question> questions = homeService.searchQuestion(key);
 
         String json = gson.toJson(questions);

@@ -19,6 +19,7 @@ public class QuestionDAO {
         ResultSet resultSet = null;
         List<Question> questions = new ArrayList<>();
 
+
         try{
             connection = JdbcUtil.getConnection();
             if(connection == null){

@@ -16,7 +16,7 @@ public class HomePage extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //设置响应的MIME类型和编码
         response.setContentType("text/html;charset=utf-8");
-        //得到session
+        //得到session，获取与当前请求关联的HttpSession对象，用于在会话中存储和检索信息
         HttpSession session = request.getSession();
         //取出用户名
         Object username = session.getAttribute("username");

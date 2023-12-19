@@ -22,6 +22,7 @@ public class RegisterServiceImpl implements RegisterService {
         return "success";
     }
 
+
     @Override
     public boolean userExist(String username) {
         User user = userDAO.check_id(username);

@@ -7,5 +7,6 @@ public interface LoginService {
      * @param password
      * @return
      */
+
     abstract public String userLogin(String username,String password);
 }

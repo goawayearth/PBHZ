@@ -8,6 +8,9 @@ public class Comment {
     private String content = null;
     private Date date = null;
     private String name = null;
+    private String filename=null;
+    private byte[] filecontent=null;
+    private String filetype=null;
 
     public String getName() {
         return name;
@@ -47,5 +50,29 @@ public class Comment {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getFileName() {
+        return filename;
+    }
+
+    public void setFileName(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFileType() {
+        return filetype;
+    }
+
+    public void setFileType(String filetype) {
+        this.filetype = filetype;
+    }
+
+    public byte[] getFileContent() {
+        return filecontent;
+    }
+
+    public void setFileContent(byte[] filecontent) {
+        this.filecontent = filecontent;
     }
 }

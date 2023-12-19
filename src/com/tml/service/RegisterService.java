@@ -13,5 +13,6 @@ public interface RegisterService {
     /**
      * 单纯判断账号是否存在
      */
+
     abstract public boolean userExist(String username);
 }

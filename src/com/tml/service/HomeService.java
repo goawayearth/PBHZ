@@ -21,5 +21,4 @@ public interface HomeService {
     public List<Question> searchQuestion(String key) throws SQLException;
 
 
-
 }

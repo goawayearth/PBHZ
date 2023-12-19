@@ -16,8 +16,10 @@ public class LoginServiceImpl implements LoginService {
         if(!password.equals(user.getPassword())){
             return "账号或者密码不正确";
         }
+
         return "success";
     }
 
 
 }
+

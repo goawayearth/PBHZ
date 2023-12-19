@@ -7,13 +7,12 @@
     <servlet>
         <servlet-name>homePage</servlet-name>
         <servlet-class>com.tml.web.HomePage</servlet-class>
-
     </servlet>
     <servlet-mapping>
         <servlet-name>homePage</servlet-name>
         <url-pattern>/homePage</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>com.tml.web.LoginServlet</servlet-class>
@@ -49,6 +48,15 @@
     <servlet-mapping>
         <servlet-name>homeLoadServlet</servlet-name>
         <url-pattern>/homeLoadServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addReplyServlet</servlet-name>
+        <servlet-class>com.tml.web.AddReplyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addReplyServlet</servlet-name>
+        <url-pattern>/addReplyServlet</url-pattern>
     </servlet-mapping>
 
 

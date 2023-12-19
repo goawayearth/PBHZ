@@ -68,7 +68,6 @@ img{
 
 .second-content{
     margin-top: 20px;
-    height: 300px;
 }
 
 .comment-title{
@@ -85,4 +84,9 @@ img{
 
 .person{
     height: 800px;
+}
+
+.commentImage{
+    width: 100px;
+    height: 100px;
 }

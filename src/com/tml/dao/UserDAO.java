@@ -47,6 +47,7 @@ public class UserDAO {
     }
 
 
+
     public void create(String username,String password) {
 
         String sql = "insert into user values(?,?)";
