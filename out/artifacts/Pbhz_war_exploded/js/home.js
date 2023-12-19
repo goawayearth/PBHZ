@@ -291,11 +291,12 @@ window.onload = function(){
                 let html = "";
                 //处理返回的内容
                 for(let d of data){
-                    let single = "<br>"+
+                    let single = "<div class='single-rect'>"+
+                        "<br>"+
                         "<div class='name'>"+d.name+" :</div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#"+d.type+"#</span> <span class='date'>"+d.date+"</span> </div>"+
-                        "<br><hr>";
+                        "<br></div>";
 
                     html+=single;
                 }
@@ -328,9 +329,9 @@ function loadHomePage(){
                 "            <div class=\"right-content\">\n" +
                 "                <dl>\n" +
                 "                    <a href='reply.jsp?id="+data[0].qid +"'><dt id=\"learn1-content\"></dt></a>\n" +
-                "                    <dd>发表于:<span id=\"learn1-date\"></span> .<span id=\"learn1-num\"></span>个回复 </dd>\n" +
+                "                    <dd>发表于:<span id=\"learn1-date\"></span> </dd>\n" +
                 "                    <a href='reply.jsp?id="+data[1].qid +"'><dt id=\"learn2-content\"></dt></a>\n" +
-                "                    <dd> 发表于:<span id=\"learn2-date\"></span> .<span id=\"learn2-num\"></span>个回复 </dd>\n" +
+                "                    <dd> 发表于:<span id=\"learn2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
@@ -344,9 +345,9 @@ function loadHomePage(){
                 "            <div class=\"right-content\">\n" +
                 "                <dl>\n" +
                 "                    <a href='reply.jsp?id="+data[2].qid +"'><dt id=\"psychogical1-content\"></dt></a>\n" +
-                "                    <dd>发表于:<span id=\"psychogical1-date\"></span> .<span id=\"psychogical1-num\"></span> 个回复</dd>\n" +
+                "                    <dd>发表于:<span id=\"psychogical1-date\"></span></dd>\n" +
                 "                    <a href='reply.jsp?id="+data[3].qid +"'><dt id=\"psychogical2-content\"></dt></a>\n" +
-                "                    <dd>发表于:<span id=\"psychogical2-date\"></span> .<span id=\"psychogical2-num\"></span> 个回复</dd>\n" +
+                "                    <dd>发表于:<span id=\"psychogical2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
@@ -360,9 +361,9 @@ function loadHomePage(){
                 "            <div class=\"right-content\">\n" +
                 "                <dl>\n" +
                 "                    <a href='reply.jsp?id="+data[4].qid +"'><dt id=\"health1-content\"></dt></a>\n" +
-                "                    <dd>发表于:<span id=\"health1-date\"></span> .<span id=\"health1-num\"></span>个回复</dd>\n" +
+                "                    <dd>发表于:<span id=\"health1-date\"></span></dd>\n" +
                 "                    <a href='reply.jsp?id="+data[5].qid +"'><dt id=\"health2-content\"></dt></a>\n" +
-                "                    <dd>发表于:<span id=\"health2-date\"></span> .<span id=\"health2-num\"></span>个回复</dd>\n" +
+                "                    <dd>发表于:<span id=\"health2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
@@ -376,9 +377,9 @@ function loadHomePage(){
                 "            <div class=\"right-content\">\n" +
                 "                <dl>\n" +
                 "                    <a href='reply.jsp?id="+data[6].qid +"'><dt id=\"law1-content\"></dt></a>\n" +
-                "                    <dd>发表于:<span id=\"law1-date\"></span> .<span id=\"law1-num\"></span>个回复</dd>\n" +
+                "                    <dd>发表于:<span id=\"law1-date\"></span></dd>\n" +
                 "                    <a href='reply.jsp?id="+data[7].qid +"'><dt id=\"law2-content\"></dt></a>\n" +
-                "                    <dd>发表于:<span id=\"law2-date\"></span> .<span id=\"law2-num\"></span>个回复</dd>\n" +
+                "                    <dd>发表于:<span id=\"law2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
@@ -392,9 +393,9 @@ function loadHomePage(){
                 "            <div class=\"right-content\">\n" +
                 "                <dl>\n" +
                 "                    <a href='reply.jsp?id="+data[8].qid +"'><dt id=\"job1-content\"></dt></a>\n" +
-                "                    <dd>发表于:<span id=\"job1-date\"></span> .<span id=\"job1-num\"></span>个回复</dd>\n" +
+                "                    <dd>发表于:<span id=\"job1-date\"></span></dd>\n" +
                 "                    <a href='reply.jsp?id="+data[9].qid +"'><dt id=\"job2-content\"></dt></a>\n" +
-                "                    <dd>发表于:<span id=\"job2-date\"></span> .<span id=\"job2-num\"></span>个回复</dd>\n" +
+                "                    <dd>发表于:<span id=\"job2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
                 "        </div>";
@@ -406,43 +407,43 @@ function loadHomePage(){
             //处理送来的字符串
             document.getElementById("learn1-content").innerHTML = data[0].content;
             document.getElementById("learn1-date").innerHTML = data[0].date;
-            document.getElementById("learn1-num").innerHTML = data[0].num;
+            // document.getElementById("learn1-num").innerHTML = data[0].num;
 
             document.getElementById("learn2-content").innerHTML = data[1].content;
             document.getElementById("learn2-date").innerHTML = data[1].date;
-            document.getElementById("learn2-num").innerHTML = data[1].num;
+            // document.getElementById("learn2-num").innerHTML = data[1].num;
 
             document.getElementById("psychogical1-content").innerHTML = data[2].content;
             document.getElementById("psychogical1-date").innerHTML = data[2].date;
-            document.getElementById("psychogical1-num").innerHTML = data[2].num;
+            // document.getElementById("psychogical1-num").innerHTML = data[2].num;
 
             document.getElementById("psychogical2-content").innerHTML = data[3].content;
             document.getElementById("psychogical2-date").innerHTML = data[3].date;
-            document.getElementById("psychogical2-num").innerHTML = data[3].num;
+            // document.getElementById("psychogical2-num").innerHTML = data[3].num;
 
             document.getElementById("health1-content").innerHTML = data[4].content;
             document.getElementById("health1-date").innerHTML = data[4].date;
-            document.getElementById("health1-num").innerHTML = data[4].num;
+            // document.getElementById("health1-num").innerHTML = data[4].num;
 
             document.getElementById("health2-content").innerHTML = data[5].content;
             document.getElementById("health2-date").innerHTML = data[5].date;
-            document.getElementById("health2-num").innerHTML = data[5].num;
+            // document.getElementById("health2-num").innerHTML = data[5].num;
 
             document.getElementById("law1-content").innerHTML = data[6].content;
             document.getElementById("law1-date").innerHTML = data[6].date;
-            document.getElementById("law1-num").innerHTML = data[6].num;
+            // document.getElementById("law1-num").innerHTML = data[6].num;
 
             document.getElementById("law2-content").innerHTML = data[7].content;
             document.getElementById("law2-date").innerHTML = data[7].date;
-            document.getElementById("law2-num").innerHTML = data[7].num;
+            // document.getElementById("law2-num").innerHTML = data[7].num;
 
             document.getElementById("job1-content").innerHTML = data[8].content;
             document.getElementById("job1-date").innerHTML = data[8].date;
-            document.getElementById("job1-num").innerHTML = data[8].num;
+            // document.getElementById("job1-num").innerHTML = data[8].num;
 
             document.getElementById("job2-content").innerHTML = data[9].content;
             document.getElementById("job2-date").innerHTML = data[9].date;
-            document.getElementById("job2-num").innerHTML = data[9].num;
+            // document.getElementById("job2-num").innerHTML = data[9].num;
 
         })
         .catch(error => console.error('error:',error));
