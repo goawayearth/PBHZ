@@ -38,10 +38,10 @@
                             "<div class='name'>"+question.getName()+" :</div>" +
                             "<div class='cont'>"+question.getContent()+"</div>" +
                             "<div><span class='theme'>#"+question.getType()+"#</span> <span class='date'>"+
-                            question.getDate()+"</span> .<span class='num'>"+question.getNum()+
-                            "</span><span class='num'>个评论</span></div>"+
+                            question.getDate()+"</span></div>"+
                             "<br>"
             );
+            System.out.println("时间："+question.getDate());
         %>
     </div>
 </div>
