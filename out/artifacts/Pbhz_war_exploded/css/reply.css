@@ -90,3 +90,12 @@ img{
     width: 100px;
     height: 100px;
 }
+
+.icon-user{
+    border-radius: 50%;
+    background-color: red;
+    width: 150px;
+    height: 150px;
+    margin: 30px;
+}
+

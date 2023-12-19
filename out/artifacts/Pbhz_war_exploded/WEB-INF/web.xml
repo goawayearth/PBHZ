@@ -59,9 +59,4 @@
         <url-pattern>/addReplyServlet</url-pattern>
     </servlet-mapping>
 
-
-
-
-
-
 </web-app>

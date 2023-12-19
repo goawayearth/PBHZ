@@ -4,6 +4,7 @@ public class User {
     /**
      * 用户类结构
      */
+
     private String username = null;
     private String password = null;
 
