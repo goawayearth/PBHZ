@@ -104,10 +104,11 @@ function loadHomePage(){
                 "                    <dd> 发表于:<span id=\"learn2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
+                "         <a href='post.jsp?type=learning'><img src='./images/切图/icon-7.png' class='rectangle11'></a>\n"+
                 "        </div>\n" +
-                "        <div onclick='loadPsychogical()' class=\"rectangle rectangle2\">\n" +
+                "        <div class=\"rectangle rectangle2\">\n" +
                 "            <!-- 左侧图片和文字 -->\n" +
-                "            <div class=\"left-content\">\n" +
+                "            <div class=\"left-content\" onclick='loadPsychogical()'>\n" +
                 "                <img src=\"./images/切图/icon-3.png\" alt=\"心灵氧气\">\n" +
                 "                <div class=\"wenzi\">心灵氧气<br>PSYCHOGICAL</div>\n" +
                 "            </div>\n" +
@@ -120,10 +121,11 @@ function loadHomePage(){
                 "                    <dd>发表于:<span id=\"psychogical2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
+                "         <a href='post.jsp?type=psychogical'><img src='./images/切图/icon-11.png' class='rectangle11'></a>\n"+
                 "        </div>\n" +
-                "        <div onclick='loadHealth()' class=\"rectangle rectangle3\">\n" +
+                "        <div class=\"rectangle rectangle3\">\n" +
                 "            <!-- 左侧图片和文字 -->\n" +
-                "            <div class=\"left-content\">\n" +
+                "            <div class=\"left-content\" onclick='loadHealth()'>\n" +
                 "                <img src=\"./images/切图/icon-4.png\" alt=\"健康部落\">\n" +
                 "                <div class=\"wenzi\">健康部落<br>HEALTH</div>\n" +
                 "            </div>\n" +
@@ -136,10 +138,11 @@ function loadHomePage(){
                 "                    <dd>发表于:<span id=\"health2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
+                "         <a href='post.jsp?type=health'><img src='./images/切图/icon-9.png' class='rectangle11'></a>\n"+
                 "        </div>\n" +
-                "        <div onclick='loadLaw()' class=\"rectangle rectangle4\">\n" +
+                "        <div class=\"rectangle rectangle4\">\n" +
                 "            <!-- 左侧图片和文字 -->\n" +
-                "            <div class=\"left-content\">\n" +
+                "            <div class=\"left-content\" onclick='loadLaw()'>\n" +
                 "                <img src=\"./images/切图/icon-5.png\" alt=\"法律咨询\">\n" +
                 "                <div class=\"wenzi\">法律咨询<br>LAW</div>\n" +
                 "            </div>\n" +
@@ -152,10 +155,11 @@ function loadHomePage(){
                 "                    <dd>发表于:<span id=\"law2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
+                "         <a href='post.jsp?type=law'><img src='./images/切图/icon-7.png' class='rectangle11'></a>\n"+
                 "        </div>\n" +
-                "        <div onclick='loadJob()' class=\"rectangle rectangle5\">\n" +
+                "        <div class=\"rectangle rectangle5\">\n" +
                 "            <!-- 左侧图片和文字 -->\n" +
-                "            <div class=\"left-content\">\n" +
+                "            <div class=\"left-content\" onclick='loadJob()'>\n" +
                 "                <img src=\"./images/切图/icon-6.png\" alt=\"就业锦囊\">\n" +
                 "                <div class=\"wenzi\">就业锦囊<br>JOB</div>\n" +
                 "            </div>\n" +
@@ -168,6 +172,7 @@ function loadHomePage(){
                 "                    <dd>发表于:<span id=\"job2-date\"></span></dd>\n" +
                 "                </dl>\n" +
                 "            </div>\n" +
+                "         <a href='post.jsp?type=job'><img src='./images/切图/icon-11.png' class='rectangle11'></a>\n"+
                 "        </div>";
 
 

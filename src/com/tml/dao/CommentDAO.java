@@ -49,7 +49,7 @@ public class CommentDAO {
                 connection = JdbcUtil.getConnection();
 
                 // 编写 SQL 语句
-                String sql = "INSERT INTO comment (qid, content, date, name, filename) VALUES (?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO comment (qid, content, date, name, filename, cid) VALUES (?, ?, ?, ?, ?,?)";
 
                 // 创建 PreparedStatement 对象
                 preparedStatement = connection.prepareStatement(sql);
@@ -65,6 +65,7 @@ public class CommentDAO {
                 preparedStatement.setTimestamp(3, sqlDate);
                 preparedStatement.setString(4, comment.getName());
                 preparedStatement.setString(5, comment.getFileName());
+                preparedStatement.setString(6, comment.getCid());
 
                 // 执行 SQL 语句
                 preparedStatement.executeUpdate();

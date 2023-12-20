@@ -68,6 +68,15 @@
 </div>
 
 <script>
+
+  window.onload = function (){
+    let urlSearchParams = new URLSearchParams(window.location.search);
+    let type = urlSearchParams.get('type');
+    if(type){
+      document.getElementById("category").value = type;
+    }
+  }
+
   function submitPostForm() {
     // Get form data
     var formData = new FormData();

@@ -193,10 +193,22 @@ form{
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: 45px 45px;
+    position: relative;
+    overflow: hidden;
 }
 .main-content .rectangle1{
-    background-image: url(../images/切图/icon-7.png);
+    /*background-image: url(../images/切图/icon-7.png);*/
+
 }
+
+.rectangle11{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 100%; /* 确保图片不超出其容器的宽度 */
+    max-height: 100%; /* 确保图片不超出其容器的高度 */
+}
+
 .main-content .rectangle2{
     background-image: url(../images/切图/icon-11.png);
 }

@@ -41,6 +41,8 @@ public class AddReplyServlet extends HttpServlet {
 
         // 创建一个 Comment 对象
         Comment reply = new Comment();
+        String cid = UUID.randomUUID().toString();
+        reply.setCid(cid);
         reply.setQid(qid);
         reply.setContent(content);
         reply.setDate(java.sql.Timestamp.valueOf(currentTime));
