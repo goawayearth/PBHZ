@@ -28,29 +28,81 @@
       System.out.println(loggedInUserName);
     %>
 
-    <form action="/Pbhz/postServlet" method="post" enctype="multipart/form-data" class="input-form">
-        <textarea name="Content" rows="14" cols="130" placeholder="在此输入问题"></textarea>
-      <input type='hidden' name='uid' value="<%= uid %>">
+<%--    <form action="/Pbhz/postServlet" method="post" enctype="multipart/form-data" class="input-form">--%>
+<%--        <textarea name="Content" rows="14" cols="130" placeholder="在此输入问题"></textarea>--%>
+<%--      <input type='hidden' name='uid' value="<%= uid %>">--%>
+<%--      <label for="category" class="type-lable">选择类别:</label>--%>
+<%--      <select name="category" id="category" class="select-type">--%>
+<%--        <option value="learning">learning</option>--%>
+<%--        <option value="law">law</option>--%>
+<%--        <option value="job">job</option>--%>
+<%--        <!-- 添加更多的选项 -->--%>
+<%--      </select>--%>
+<%--      <input type="file" name="fileUpload"> <!-- 文件上传字段 -->--%>
+<%--      <input type="submit" value="发表">--%>
+<%--    </form>--%>
+
+    <!-- Your HTML Form -->
+    <form id="postForm" enctype="multipart/form-data" class="input-form">
+      <textarea id="content" name="Content" rows="14" cols="130" placeholder="在此输入问题"></textarea>
+      <input type="hidden" id="uid" name="uid" value="<%= uid %>">
       <label for="category" class="type-lable">选择类别:</label>
-      <select name="category" id="category" class="select-type">
+      <select id="category" name="category" class="select-type">
         <option value="learning">learning</option>
         <option value="law">law</option>
         <option value="job">job</option>
+        <option value="psychogical">psychogical</option>
+        <option value="help">help</option>
+        <option value="other">other</option>
+
         <!-- 添加更多的选项 -->
       </select>
-      <input type="file" name="fileUpload"> <!-- 文件上传字段 -->
-      <input type="submit" value="发表">
+      <input type="file" id="fileUpload" name="fileUpload"> <!-- 文件上传字段 -->
+      <input type="button" value="发表" onclick="submitPostForm()">
     </form>
+
+
 
   </div>
 
 </div>
 
 <script>
-  // 清空回复栏
-  document.querySelector('textarea[name="replyContent"]').value = '';
-  // 刷新页面
-  location.reload();
+  function submitPostForm() {
+    // Get form data
+    var formData = new FormData();
+    formData.append('Content', document.getElementById('content').value);
+    formData.append('uid', document.getElementById('uid').value);
+    formData.append('category', document.getElementById('category').value);
+    formData.append('fileUpload', document.getElementById('fileUpload').files[0]);
+
+    // Send the data using fetch
+    fetch('/Pbhz/postServlet', {
+      method: 'POST',
+      body: formData
+    })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.text(); // assuming server returns JSON
+            })
+            .then(data => {
+              // Handle the response data as needed
+              console.log(data);
+
+              // Optionally: Update UI or display a success message
+
+              // Clear the form after successful submission
+              document.getElementById('content').value = '';
+              document.getElementById('uid').value = '';
+              document.getElementById('category').value = 'learning'; // Set default category
+              document.getElementById('fileUpload').value = '';
+            })
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+            });
+  }
 </script>
 
 </body>

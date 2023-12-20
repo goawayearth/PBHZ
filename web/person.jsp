@@ -33,10 +33,16 @@
                 <% out.println("<img class='icon-image' enctype='multipart/form-data' id='icon-image' src="+user.getIconPath()+" alt='未设置图片'>");
                 %>
             </div>
-            <form action="/Pbhz/changeIcon" method="post" enctype="multipart/form-data">
-                <input class="icon-up" type="file" name="fileUpload"> <!-- 文件上传字段 -->
-                <input type="submit" value="确认修改头像">
+<%--            <form action="/Pbhz/changeIcon" method="post" enctype="multipart/form-data">--%>
+<%--                <input class="icon-up" type="file" name="fileUpload"> <!-- 文件上传字段 -->--%>
+<%--                <input type="submit" value="确认修改头像">--%>
+<%--            </form>--%>
+
+            <form id="iconForm" enctype="multipart/form-data">
+                <input class="icon-up" type="file" id="fileUpload"> <!-- 文件上传字段 -->
+                <input type="button" value="确认修改头像" onclick="submitIconForm()">
             </form>
+
             <% out.println("<div class='user-name'>用户名:"+user.getUsername()+" </div>");
             System.out.println("#$^%"+user.getIconPath());  %>
 
@@ -58,9 +64,10 @@
 
         for(int i=0;i<questionList.size();i++){
         out.println("<div class='single-rect'>"+ "<br>"+
-        "<div class='name'>"+questionList.get(i).getName()+" :</div>" +
+                "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+questionList.get(i).getIcon()+"' alt='faild'></div>"+
+                "<div class='name'>"+questionList.get(i).getName()+" :</div></div>" +
         "<a href='reply.jsp?id="+questionList.get(i).getQid()+"'><div class='cont'>"+questionList.get(i).getContent()+"</div></a>" +
-        "<div><span class='theme'>#other#</span> <span class='date'>发表于"+questionList.get(i).getDate()+"</span> </div>"+
+        "<div class='gekai'><span class='theme'>#other#</span> <span class='date'>发表于"+questionList.get(i).getDate()+"</span> </div>"+
         "<br></div>");
 
         }
@@ -69,6 +76,34 @@
     %>
 
     <script>
+        function submitIconForm() {
+            // Get form data
+            var formData = new FormData();
+            formData.append('fileUpload', document.getElementById('fileUpload').files[0]);
+
+            // Send the data using fetch
+            fetch('/Pbhz/changeIcon', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text(); // assuming server returns JSON
+                })
+                .then(data => {
+                    console.log(data);
+
+                    document.getElementById('fileUpload').value = '';
+                    document.getElementById('icon-image').src = data;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+
+
         function uploadFile() {
             console.log("执行了传输文件的函数");
             var fileInput = document.getElementById('fileUpload');

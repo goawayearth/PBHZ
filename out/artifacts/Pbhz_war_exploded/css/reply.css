@@ -59,7 +59,7 @@ body{
 
 img{
     margin: 10px;
-    margin-left: 30px;
+    margin-left: 40px;
 }
 
 .num{
@@ -88,12 +88,12 @@ img{
 
 .commentImage{
     width: 100px;
-    height: 100px;
+    /*height: 100px;*/
 }
 
 .commentImage1{
     width: 200px;
-    height: 200px;
+    /*height: 200px;*/
 }
 
 .icon-user{
@@ -180,7 +180,7 @@ img{
 
 .cont{
     margin-top:5px;
-    margin-left:20px;
+    margin-left:35px;
     font-size: 16px;
     margin-bottom: 10px;
     color: black;
@@ -198,7 +198,7 @@ a{
 }
 
 .date{
-    margin-left: 20px;
+    margin-left: 35px;
     color: #999999;
     font-size: 12px;
 }
@@ -217,12 +217,14 @@ a{
     border-radius: 50%;
     overflow: hidden;
     background-color: red;
-    margin-left: 25px;
+    margin-left: 35px;
 }
 
 .icon-image1{
     width: 30px;
-    height: 30px;
+    /*height: 30px;*/
     margin: 0px;
 }
+
+
 

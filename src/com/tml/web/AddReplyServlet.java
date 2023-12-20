@@ -76,10 +76,11 @@ public class AddReplyServlet extends HttpServlet {
 
         // 添加回复到数据库成功后
         // 设置一个属性或使用Session标记回复成功,目的是为了更新页面，添加新的回复在页面上
-        request.setAttribute("replySuccess", true);
+//        request.setAttribute("replySuccess", true);
 
         // 请求转发允许你将请求传递给另一个资源，并在同一个请求中处理。
-        request.getRequestDispatcher("reply.jsp?id=" + qid).forward(request, response);
+//        request.getRequestDispatcher("reply.jsp?id=" + qid).forward(request, response);
+        response.getWriter().write("success");
     }
 
     private void saveFile(InputStream inputStream, String filePath) throws IOException {

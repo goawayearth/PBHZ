@@ -3,6 +3,7 @@
 package com.tml.web;
 
 import com.google.gson.Gson;
+import com.tml.bean.Comment;
 import com.tml.bean.Question;
 import com.tml.service.impl.HomeServiceImpl;
 import jakarta.servlet.ServletException;
@@ -123,5 +124,13 @@ public class HomeLoadServlet extends HttpServlet {
         String json = gson.toJson(questions);
         response.getWriter().write(json);
     }
+
+    protected void getComment(HttpServletRequest request, HttpServletResponse response) throws SQLException,IOException {
+        String qid = request.getParameter("qid");
+        List<Comment> comments = homeService.getCommentsByQid(qid);
+        String json = gson.toJson(comments);
+        response.getWriter().write(json);
+    }
+
 
 }

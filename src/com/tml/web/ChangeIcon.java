@@ -44,7 +44,8 @@ public class ChangeIcon extends HttpServlet {
             UserInfoImpl userInfo = new UserInfoImpl();
             userInfo.changeIcon(username,filepath1);
 
-            response.sendRedirect("person.jsp");
+//            response.sendRedirect("person.jsp");
+            response.getWriter().write(filepath1);
         }
 
 

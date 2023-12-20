@@ -73,7 +73,8 @@ public class PostServlet extends HttpServlet {
         QuestionServiceImpl questionService = new QuestionServiceImpl();
         questionService.saveQuestion(question);
 
-        request.getRequestDispatcher("post.jsp").forward(request, response);
+//        request.getRequestDispatcher("post.jsp").forward(request, response);
+        response.getWriter().write("success");
     }
 
     @Override

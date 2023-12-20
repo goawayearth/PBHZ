@@ -163,7 +163,7 @@ public class QuestionDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String sql = "insert into question values (?,?,?,?,?,?,?,?)";
+        String sql = "insert into question values (?,?,?,?,?,?,?)";
         try{
             connection = JdbcUtil.getConnection();
             if(connection == null){
@@ -215,6 +215,7 @@ public class QuestionDAO {
                 question.setNum(resultSet.getInt("num"));
                 question.setName(resultSet.getString("name"));
                 question.setFilepath(resultSet.getString("filepath"));
+                question.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
                 questions.add(question);
             }
         }
