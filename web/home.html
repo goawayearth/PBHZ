@@ -179,7 +179,7 @@
     }
 
     function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        currentIndex = (currentIndex - 1 ) % totalItems;
         updateCarousel();
     }
 
@@ -202,6 +202,11 @@
             // 如果当前是最后一张图，立即切换到第一张图，实现无限滚动
             document.querySelector('.carousel-container').style.transition = 'none';
             currentIndex = 0;
+            document.querySelector('.carousel-container').style.transform = 'translateX(0px)';
+        }
+        else if(currentIndex === 0){
+            document.querySelector('.carousel-container').style.transition = 'none';
+            currentIndex = totalItems -1;
             document.querySelector('.carousel-container').style.transform = 'translateX(0px)';
         }
     }

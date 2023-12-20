@@ -43,7 +43,8 @@ window.onload = function(){
                 //处理返回的内容
                 for(let d of data){
                     let single ="<div class='single-rect'><br>"+
-                        "<div class='name'>"+d.name+"</div>" +
+                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                        "<div class='name'>"+d.name+":</div></div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#help#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                         "<br></div>";
@@ -80,7 +81,8 @@ window.onload = function(){
                 for(let d of data){
                     let single ="<div class='single-rect'>"+
                         "<br>"+
-                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                        "<div class='name'>"+d.name+" :</div></div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#learn#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                         "<br></div>";
@@ -117,7 +119,8 @@ window.onload = function(){
                 for(let d of data){
                     let single = "<div class='single-rect'>"+
                         "<br>"+
-                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                        "<div class='name'>"+d.name+" :</div></div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#psychogical#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                         "<br></div>";
@@ -155,7 +158,8 @@ window.onload = function(){
                 for(let d of data){
                     let single = "<div class='single-rect'>"+
                         "<br>"+
-                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                        "<div class='name'>"+d.name+" :</div></div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#health#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                         "<br></div>";
@@ -192,7 +196,8 @@ window.onload = function(){
                 for(let d of data){
                     let single = "<div class='single-rect'>"+
                         "<br>"+
-                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                        "<div class='name'>"+d.name+" :</div></div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#law#</span> <span class='date'>发表于"+d.date+"</span></div>"+
                         "<br></div>";
@@ -229,7 +234,8 @@ window.onload = function(){
                 for(let d of data){
                     let single = "<div class='single-rect'>"+
                         "<br>"+
-                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                        "<div class='name'>"+d.name+" :</div></div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#job#</span> <span class='date'>发表于"+d.date+"</span></div>"+
                         "<br></div>";
@@ -263,11 +269,13 @@ window.onload = function(){
                 let html = "";
                 //处理返回的内容
                 for(let d of data){
-                    let single = "<br>"+
-                        "<div class='name'>"+d.name+" :</div>" +
+                    let single = "<div class='single-rect'>"+
+                        "<br>"+
+                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                        "<div class='name'>"+d.name+" :</div></div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#other#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
-                        "<br><hr>";
+                        "<br></div>";
 
                     html+=single;
                 }
@@ -294,7 +302,8 @@ window.onload = function(){
                 for(let d of data){
                     let single = "<div class='single-rect'>"+
                         "<br>"+
-                        "<div class='name'>"+d.name+" :</div>" +
+                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                        "<div class='name'>"+d.name+" :</div></div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#"+d.type+"#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                         "<br></div>";

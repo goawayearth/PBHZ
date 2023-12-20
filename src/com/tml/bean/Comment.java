@@ -11,6 +11,15 @@ public class Comment {
     private String filename=null;
     private byte[] filecontent=null;
     private String filetype=null;
+    private String icon = null;
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     public String getName() {
         return name;

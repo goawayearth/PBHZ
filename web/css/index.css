@@ -316,6 +316,7 @@ form{
     color: #6d8794;
     margin-left:20px;
     font-size: 16px;
+    margin-top: 5px;
 
 }
 
@@ -424,3 +425,23 @@ body {
     color: white;
     height: 32px;
 }
+
+
+.icon-person{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: red;
+    margin-left: 25px;
+}
+
+.icon-image1{
+    width: 30px;
+    height: 30px;
+}
+
+.use{
+    display: flex;
+}
+

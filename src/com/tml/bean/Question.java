@@ -10,6 +10,15 @@ public class Question {
     private String type = null;
     private String name = null;
     private String filepath = null;
+    private String icon = null;
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
 
     public String getFilepath() {
         return filepath;

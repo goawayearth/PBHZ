@@ -149,3 +149,80 @@ img{
 .type-lable{
     margin-left: 20px;
 }
+
+.otherPage{
+    /*width: 1028px;*/
+    /*height:500px;*/
+    background-color: rgb(233, 229, 229);
+    margin-top:10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.single-rect{
+    background-color: white;
+    width: 1028px;
+    height: 140px;
+    border-radius: 15px;
+    margin-top: 8px;
+}
+
+
+.name{
+    color: #6d8794;
+    margin-left:20px;
+    font-size: 16px;
+
+}
+
+.cont{
+    margin-top:5px;
+    margin-left:20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: black;
+
+}
+
+a{
+    text-decoration: none; /* 去掉下划线 */
+}
+
+.theme{
+    color: #6d8794;
+    margin-left:20px;
+    font-size: 12px;
+}
+
+.date{
+    margin-left: 20px;
+    color: #999999;
+    font-size: 12px;
+}
+
+.conta{
+    width: 1028px;
+}
+
+.use{
+    display: flex;
+}
+
+.icon-person{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: red;
+    margin-left: 25px;
+}
+
+.icon-image1{
+    width: 30px;
+    height: 30px;
+    margin: 0px;
+}
+

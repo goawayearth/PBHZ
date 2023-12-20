@@ -34,8 +34,9 @@
             }
 
             out.println(
-                    "<br>"+
-                            "<div class='name'>"+question.getName()+" :</div>" +
+                    "<br>"+"<div class='use'><div class='icon-person'><img class='icon-image1' src='"+question.getIcon()+"' alt='faild'></div>"+
+
+                            "<div class='name'>"+question.getName()+" :</div></div>" +
                             "<div class='cont'>"+question.getContent()+"</div>" );
             if(question.getFilepath()!=null)
             {
@@ -75,7 +76,9 @@
                 throw new RuntimeException(e);
             }
             for (int i = 0; i < comments.size(); i++) {
-                out.println("<div class='name'>" + comments.get(i).getName() + " :</div>" +
+                out.println(
+                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+comments.get(i).getIcon()+"' alt='faild'></div>"+
+                        "<div class='name'>" + comments.get(i).getName() + " :</div></div>" +
                         "<div class='cont'>" + comments.get(i).getContent() + "</div>");
 
                 // 如果有文件信息，显示文件信息

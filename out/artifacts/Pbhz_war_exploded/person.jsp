@@ -2,6 +2,8 @@
 <%@ page import="com.tml.service.UserInform" %>
 <%@ page import="com.tml.service.impl.UserInfoImpl" %>
 <%@ page import="com.tml.bean.User" %>
+<%@ page import="com.tml.bean.Question" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -44,6 +46,27 @@
         </div>
 
     </div>
+
+<%--    <div class="container " id="container1">--%>
+
+
+<%--    <h1>这是哪</h1>--%>
+<%--    </div>--%>
+    <%out.println("    <div id=\"otherPage\" class=\"otherPage\"><div class='conta'>");
+        List<Question> questionList = userInfo.getQuestion(loggedInUserName);
+        System.out.println("大小是："+questionList.size());
+
+        for(int i=0;i<questionList.size();i++){
+        out.println("<div class='single-rect'>"+ "<br>"+
+        "<div class='name'>"+questionList.get(i).getName()+" :</div>" +
+        "<a href='reply.jsp?id="+questionList.get(i).getQid()+"'><div class='cont'>"+questionList.get(i).getContent()+"</div></a>" +
+        "<div><span class='theme'>#other#</span> <span class='date'>发表于"+questionList.get(i).getDate()+"</span> </div>"+
+        "<br></div>");
+
+        }
+
+    out.println("</div></div>");
+    %>
 
     <script>
         function uploadFile() {

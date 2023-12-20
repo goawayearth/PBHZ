@@ -12,6 +12,8 @@ import java.util.List;
 
 public class CommentDAO {
 
+    UserDAO userDAO = new UserDAO();
+
 
     public List<Comment> check_qid(String qid) throws SQLException {
         Connection connection = null;
@@ -31,7 +33,7 @@ public class CommentDAO {
             comment.setCid(resultSet.getString("cid"));
             comment.setName(resultSet.getString("name"));
             comment.setFileName(resultSet.getString("filename"));
-
+            comment.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
             comments.add(comment);
         }
         return comments;
@@ -66,6 +68,7 @@ public class CommentDAO {
 
                 // 执行 SQL 语句
                 preparedStatement.executeUpdate();
+                System.out.println("问题存储成功");
             } catch (SQLException e) {
                 e.printStackTrace();
                 // 处理异常

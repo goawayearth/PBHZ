@@ -34,37 +34,37 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public List<Question> helpContent() {
-        return questionDAO.check_type("help");
+        return questionDAO.check_type_all("help");
     }
 
     @Override
     public List<Question> learnContent() {
-        return questionDAO.check_type("learning");
+        return questionDAO.check_type_all("learning");
     }
 
     @Override
     public List<Question> psychogicalContent() {
-        return questionDAO.check_type("psychogical");
+        return questionDAO.check_type_all("psychogical");
     }
 
     @Override
     public List<Question> healthContent() {
-        return questionDAO.check_type("health");
+        return questionDAO.check_type_all("health");
     }
 
     @Override
     public List<Question> lawContent() {
-        return questionDAO.check_type("law");
+        return questionDAO.check_type_all("law");
     }
 
     @Override
     public List<Question> jobContent() {
-        return questionDAO.check_type("job");
+        return questionDAO.check_type_all("job");
     }
 
     @Override
     public List<Question> otherContent() {
-        return questionDAO.check_type("other");
+        return questionDAO.check_type_all("other");
     }
 
     @Override
