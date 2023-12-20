@@ -67,7 +67,7 @@
                 "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+questionList.get(i).getIcon()+"' alt='faild'></div>"+
                 "<div class='name'>"+questionList.get(i).getName()+" :</div></div>" +
         "<a href='reply.jsp?id="+questionList.get(i).getQid()+"'><div class='cont'>"+questionList.get(i).getContent()+"</div></a>" +
-        "<div class='gekai'><span class='theme'>#other#</span> <span class='date'>发表于"+questionList.get(i).getDate()+"</span> </div>"+
+        "<div class='gekai'><span class='theme'>#"+questionList.get(i).getType()+"#</span> <span class='date'>发表于"+questionList.get(i).getDate()+"</span> </div>"+
         "<br></div>");
 
         }

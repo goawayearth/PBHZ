@@ -12,278 +12,38 @@ window.onload = function(){
     loadHomePage();
 
     document.getElementById("home").onclick = function(){
-        loadHomePage();
-        document.getElementById("home").style.backgroundColor="skyblue";
-        document.getElementById("help").style.backgroundColor = "transparent";
-        document.getElementById("learn").style.backgroundColor = "transparent";
-        document.getElementById("psychogical").style.backgroundColor = "transparent";
-        document.getElementById("health").style.backgroundColor = "transparent";
-        document.getElementById("law").style.backgroundColor = "transparent";
-        document.getElementById("job").style.backgroundColor = "transparent";
-        document.getElementById("other").style.backgroundColor = "transparent";
+        loadHome();
     }
 
+
     document.getElementById("help").onclick = function(){
-        addContent();
-        document.getElementById("home").style.backgroundColor = "transparent";
-        document.getElementById("help").style.backgroundColor = "skyblue";
-        document.getElementById("learn").style.backgroundColor = "transparent";
-        document.getElementById("psychogical").style.backgroundColor = "transparent";
-        document.getElementById("health").style.backgroundColor = "transparent";
-        document.getElementById("law").style.backgroundColor = "transparent";
-        document.getElementById("job").style.backgroundColor = "transparent";
-        document.getElementById("other").style.backgroundColor = "transparent";
-
-        //进行异步请求
-        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateHelp')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                let html = "";
-                //处理返回的内容
-                for(let d of data){
-                    let single ="<div class='single-rect'><br>"+
-                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                        "<div class='name'>"+d.name+":</div></div>" +
-                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
-                        "<div><span class='theme'>#help#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
-                        "<br></div>";
-
-                    html+=single;
-                }
-
-                document.getElementById("otherPage").innerHTML = html+"<br><br>";
-
-            })
-            .catch(error => console.error('error:',error));
-
+        loadHelp();
     }
 
     document.getElementById("learn").onclick = function(){
-        addContent();
-        document.getElementById("home").style.backgroundColor = "transparent";
-        document.getElementById("help").style.backgroundColor = "transparent";
-        document.getElementById("learn").style.backgroundColor = "skyblue";
-        document.getElementById("psychogical").style.backgroundColor = "transparent";
-        document.getElementById("health").style.backgroundColor = "transparent";
-        document.getElementById("law").style.backgroundColor = "transparent";
-        document.getElementById("job").style.backgroundColor = "transparent";
-        document.getElementById("other").style.backgroundColor = "transparent";
-
-        //进行异步请求
-        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateLearn')
-            .then(response => response.json())
-            .then(data => {
-
-                //处理返回的内容
-                let html = "";
-                //处理返回的内容
-                for(let d of data){
-                    let single ="<div class='single-rect'>"+
-                        "<br>"+
-                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                        "<div class='name'>"+d.name+" :</div></div>" +
-                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
-                        "<div><span class='theme'>#learn#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
-                        "<br></div>";
-
-                    html+=single;
-                }
-
-                document.getElementById("otherPage").innerHTML = html+"<br><br>";
-
-
-            })
-            .catch(error => console.error('error:',error));
+        loadLearn();
     }
 
     document.getElementById("psychogical").onclick = function(){
-        addContent();
-        document.getElementById("home").style.backgroundColor = "transparent";
-        document.getElementById("help").style.backgroundColor = "transparent";
-        document.getElementById("learn").style.backgroundColor = "transparent";
-        document.getElementById("psychogical").style.backgroundColor = "skyblue";
-        document.getElementById("health").style.backgroundColor = "transparent";
-        document.getElementById("law").style.backgroundColor = "transparent";
-        document.getElementById("job").style.backgroundColor = "transparent";
-        document.getElementById("other").style.backgroundColor = "transparent";
-
-        //进行异步请求
-        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updatePsychogical')
-            .then(response => response.json())
-            .then(data => {
-                //处理返回的内容
-                //处理返回的内容
-                let html = "";
-                //处理返回的内容
-                for(let d of data){
-                    let single = "<div class='single-rect'>"+
-                        "<br>"+
-                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                        "<div class='name'>"+d.name+" :</div></div>" +
-                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
-                        "<div><span class='theme'>#psychogical#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
-                        "<br></div>";
-
-                    html+=single;
-                }
-
-                document.getElementById("otherPage").innerHTML = html+"<br><br>";
-
-
-            })
-            .catch(error => console.error('error:',error));
+        loadPsychogical();
 
     }
 
     document.getElementById("health").onclick = function(){
-        addContent();
-        document.getElementById("home").style.backgroundColor = "transparent";
-        document.getElementById("help").style.backgroundColor = "transparent";
-        document.getElementById("learn").style.backgroundColor = "transparent";
-        document.getElementById("psychogical").style.backgroundColor = "transparent";
-        document.getElementById("health").style.backgroundColor = "skyblue";
-        document.getElementById("law").style.backgroundColor = "transparent";
-        document.getElementById("job").style.backgroundColor = "transparent";
-        document.getElementById("other").style.backgroundColor = "transparent";
-
-        //进行异步请求
-        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateHealth')
-            .then(response => response.json())
-            .then(data => {
-                //处理返回的内容
-                //处理返回的内容
-                let html = "";
-                //处理返回的内容
-                for(let d of data){
-                    let single = "<div class='single-rect'>"+
-                        "<br>"+
-                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                        "<div class='name'>"+d.name+" :</div></div>" +
-                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
-                        "<div><span class='theme'>#health#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
-                        "<br></div>";
-
-                    html+=single;
-                }
-
-                document.getElementById("otherPage").innerHTML = html+"<br><br>";
-
-            })
-            .catch(error => console.error('error:',error));
-
+        loadHealth();
     }
 
     document.getElementById("law").onclick = function(){
-        addContent();
-        document.getElementById("home").style.backgroundColor = "transparent";
-        document.getElementById("help").style.backgroundColor = "transparent";
-        document.getElementById("learn").style.backgroundColor = "transparent";
-        document.getElementById("psychogical").style.backgroundColor = "transparent";
-        document.getElementById("health").style.backgroundColor = "transparent";
-        document.getElementById("law").style.backgroundColor = "skyblue";
-        document.getElementById("job").style.backgroundColor = "transparent";
-        document.getElementById("other").style.backgroundColor = "transparent";
-
-        //进行异步请求
-        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateLaw')
-            .then(response => response.json())
-            .then(data => {
-                //处理返回的内容
-                //处理返回的内容
-                let html = "";
-                //处理返回的内容
-                for(let d of data){
-                    let single = "<div class='single-rect'>"+
-                        "<br>"+
-                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                        "<div class='name'>"+d.name+" :</div></div>" +
-                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
-                        "<div><span class='theme'>#law#</span> <span class='date'>发表于"+d.date+"</span></div>"+
-                        "<br></div>";
-
-                    html+=single;
-                }
-
-                document.getElementById("otherPage").innerHTML = html+"<br><br>";
-
-            })
-            .catch(error => console.error('error:',error));
-
+        loadLaw();
     }
 
     document.getElementById("job").onclick = function (){
-        addContent();
-        document.getElementById("home").style.backgroundColor = "transparent";
-        document.getElementById("help").style.backgroundColor = "transparent";
-        document.getElementById("learn").style.backgroundColor = "transparent";
-        document.getElementById("psychogical").style.backgroundColor = "transparent";
-        document.getElementById("health").style.backgroundColor = "transparent";
-        document.getElementById("law").style.backgroundColor = "transparent";
-        document.getElementById("job").style.backgroundColor = "skyblue";
-        document.getElementById("other").style.backgroundColor = "transparent";
-
-        //进行异步请求
-        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateJob')
-            .then(response => response.json())
-            .then(data => {
-                //处理返回的内容
-                //处理返回的内容
-                let html = "";
-                //处理返回的内容
-                for(let d of data){
-                    let single = "<div class='single-rect'>"+
-                        "<br>"+
-                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                        "<div class='name'>"+d.name+" :</div></div>" +
-                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
-                        "<div><span class='theme'>#job#</span> <span class='date'>发表于"+d.date+"</span></div>"+
-                        "<br></div>";
-
-                    html+=single;
-                }
-
-                document.getElementById("otherPage").innerHTML = html+"<br><br>";
-
-            })
-            .catch(error => console.error('error:',error));
-
+        loadJob();
     }
+
+
     document.getElementById("other").onclick = function (){
-        addContent();
-        document.getElementById("home").style.backgroundColor = "transparent";
-        document.getElementById("help").style.backgroundColor = "transparent";
-        document.getElementById("learn").style.backgroundColor = "transparent";
-        document.getElementById("psychogical").style.backgroundColor = "transparent";
-        document.getElementById("health").style.backgroundColor = "transparent";
-        document.getElementById("law").style.backgroundColor = "transparent";
-        document.getElementById("job").style.backgroundColor = "transparent";
-        document.getElementById("other").style.backgroundColor = "skyblue";
-
-        //进行异步请求
-        fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateOther')
-            .then(response => response.json())
-            .then(data => {
-                //处理返回的内容
-                //处理返回的内容
-                let html = "";
-                //处理返回的内容
-                for(let d of data){
-                    let single = "<div class='single-rect'>"+
-                        "<br>"+
-                        "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                        "<div class='name'>"+d.name+" :</div></div>" +
-                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
-                        "<div><span class='theme'>#other#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
-                        "<br></div>";
-
-                    html+=single;
-                }
-
-                document.getElementById("otherPage").innerHTML = html+"<br><br>";
-
-            })
-            .catch(error => console.error('error:',error));
+        loadOther();
     }
 
     document.getElementById("search-button").onclick = function (){
@@ -331,7 +91,7 @@ function loadHomePage(){
             document.getElementById("content").innerHTML =
                 " <div class=\"rectangle rectangle1\">\n" +
                 "            <!-- 左侧图片和文字 -->\n" +
-                "            <div class=\"left-content\">\n" +
+                "            <div onclick='loadLearn()' class=\"left-content\">\n" +
                 "                <img src=\"./images/切图/icon-2.png\" alt=\"学术之林\">\n" +
                 "                <div class=\"wenzi\">学术之林<br>LEARNING</div>\n" +
                 "            </div>\n" +
@@ -345,7 +105,7 @@ function loadHomePage(){
                 "                </dl>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
-                "        <div class=\"rectangle rectangle2\">\n" +
+                "        <div onclick='loadPsychogical()' class=\"rectangle rectangle2\">\n" +
                 "            <!-- 左侧图片和文字 -->\n" +
                 "            <div class=\"left-content\">\n" +
                 "                <img src=\"./images/切图/icon-3.png\" alt=\"心灵氧气\">\n" +
@@ -361,7 +121,7 @@ function loadHomePage(){
                 "                </dl>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
-                "        <div class=\"rectangle rectangle3\">\n" +
+                "        <div onclick='loadHealth()' class=\"rectangle rectangle3\">\n" +
                 "            <!-- 左侧图片和文字 -->\n" +
                 "            <div class=\"left-content\">\n" +
                 "                <img src=\"./images/切图/icon-4.png\" alt=\"健康部落\">\n" +
@@ -377,7 +137,7 @@ function loadHomePage(){
                 "                </dl>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
-                "        <div class=\"rectangle rectangle4\">\n" +
+                "        <div onclick='loadLaw()' class=\"rectangle rectangle4\">\n" +
                 "            <!-- 左侧图片和文字 -->\n" +
                 "            <div class=\"left-content\">\n" +
                 "                <img src=\"./images/切图/icon-5.png\" alt=\"法律咨询\">\n" +
@@ -393,7 +153,7 @@ function loadHomePage(){
                 "                </dl>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
-                "        <div class=\"rectangle rectangle5\">\n" +
+                "        <div onclick='loadJob()' class=\"rectangle rectangle5\">\n" +
                 "            <!-- 左侧图片和文字 -->\n" +
                 "            <div class=\"left-content\">\n" +
                 "                <img src=\"./images/切图/icon-6.png\" alt=\"就业锦囊\">\n" +
@@ -466,4 +226,281 @@ function addContent(){
         "\n" +
         "    </div>";
 
+}
+
+function loadHome(){
+    loadHomePage();
+    document.getElementById("home").style.backgroundColor="skyblue";
+    document.getElementById("help").style.backgroundColor = "transparent";
+    document.getElementById("learn").style.backgroundColor = "transparent";
+    document.getElementById("psychogical").style.backgroundColor = "transparent";
+    document.getElementById("health").style.backgroundColor = "transparent";
+    document.getElementById("law").style.backgroundColor = "transparent";
+    document.getElementById("job").style.backgroundColor = "transparent";
+    document.getElementById("other").style.backgroundColor = "transparent";
+}
+
+function loadHelp(){
+    addContent();
+    document.getElementById("home").style.backgroundColor = "transparent";
+    document.getElementById("help").style.backgroundColor = "skyblue";
+    document.getElementById("learn").style.backgroundColor = "transparent";
+    document.getElementById("psychogical").style.backgroundColor = "transparent";
+    document.getElementById("health").style.backgroundColor = "transparent";
+    document.getElementById("law").style.backgroundColor = "transparent";
+    document.getElementById("job").style.backgroundColor = "transparent";
+    document.getElementById("other").style.backgroundColor = "transparent";
+
+    //进行异步请求
+    fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateHelp')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            let html = "";
+            //处理返回的内容
+            for(let d of data){
+                let single ="<div class='single-rect'><br>"+
+                    "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                    "<div class='name'>"+d.name+":</div></div>" +
+                    "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
+                    "<div><span class='theme'>#help#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
+                    "<br></div>";
+
+                html+=single;
+            }
+
+            document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+        })
+        .catch(error => console.error('error:',error));
+
+}
+
+function loadLearn(){
+    addContent();
+    document.getElementById("home").style.backgroundColor = "transparent";
+    document.getElementById("help").style.backgroundColor = "transparent";
+    document.getElementById("learn").style.backgroundColor = "skyblue";
+    document.getElementById("psychogical").style.backgroundColor = "transparent";
+    document.getElementById("health").style.backgroundColor = "transparent";
+    document.getElementById("law").style.backgroundColor = "transparent";
+    document.getElementById("job").style.backgroundColor = "transparent";
+    document.getElementById("other").style.backgroundColor = "transparent";
+
+    //进行异步请求
+    fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateLearn')
+        .then(response => response.json())
+        .then(data => {
+
+            //处理返回的内容
+            let html = "";
+            //处理返回的内容
+            for(let d of data){
+                let single ="<div class='single-rect'>"+
+                    "<br>"+
+                    "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
+                    "<div><span class='theme'>#learn#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
+                    "<br></div>";
+
+                html+=single;
+            }
+
+            document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+
+        })
+        .catch(error => console.error('error:',error));
+}
+
+
+function loadPsychogical(){
+    addContent();
+    document.getElementById("home").style.backgroundColor = "transparent";
+    document.getElementById("help").style.backgroundColor = "transparent";
+    document.getElementById("learn").style.backgroundColor = "transparent";
+    document.getElementById("psychogical").style.backgroundColor = "skyblue";
+    document.getElementById("health").style.backgroundColor = "transparent";
+    document.getElementById("law").style.backgroundColor = "transparent";
+    document.getElementById("job").style.backgroundColor = "transparent";
+    document.getElementById("other").style.backgroundColor = "transparent";
+
+    //进行异步请求
+    fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updatePsychogical')
+        .then(response => response.json())
+        .then(data => {
+            //处理返回的内容
+            //处理返回的内容
+            let html = "";
+            //处理返回的内容
+            for(let d of data){
+                let single = "<div class='single-rect'>"+
+                    "<br>"+
+                    "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
+                    "<div><span class='theme'>#psychogical#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
+                    "<br></div>";
+
+                html+=single;
+            }
+
+            document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+
+        })
+        .catch(error => console.error('error:',error));
+
+}
+
+
+function loadHealth(){
+    addContent();
+    document.getElementById("home").style.backgroundColor = "transparent";
+    document.getElementById("help").style.backgroundColor = "transparent";
+    document.getElementById("learn").style.backgroundColor = "transparent";
+    document.getElementById("psychogical").style.backgroundColor = "transparent";
+    document.getElementById("health").style.backgroundColor = "skyblue";
+    document.getElementById("law").style.backgroundColor = "transparent";
+    document.getElementById("job").style.backgroundColor = "transparent";
+    document.getElementById("other").style.backgroundColor = "transparent";
+
+    //进行异步请求
+    fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateHealth')
+        .then(response => response.json())
+        .then(data => {
+            //处理返回的内容
+            //处理返回的内容
+            let html = "";
+            //处理返回的内容
+            for(let d of data){
+                let single = "<div class='single-rect'>"+
+                    "<br>"+
+                    "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
+                    "<div><span class='theme'>#health#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
+                    "<br></div>";
+
+                html+=single;
+            }
+
+            document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+        })
+        .catch(error => console.error('error:',error));
+
+}
+
+function loadLaw(){
+    addContent();
+    document.getElementById("home").style.backgroundColor = "transparent";
+    document.getElementById("help").style.backgroundColor = "transparent";
+    document.getElementById("learn").style.backgroundColor = "transparent";
+    document.getElementById("psychogical").style.backgroundColor = "transparent";
+    document.getElementById("health").style.backgroundColor = "transparent";
+    document.getElementById("law").style.backgroundColor = "skyblue";
+    document.getElementById("job").style.backgroundColor = "transparent";
+    document.getElementById("other").style.backgroundColor = "transparent";
+
+    //进行异步请求
+    fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateLaw')
+        .then(response => response.json())
+        .then(data => {
+            //处理返回的内容
+            //处理返回的内容
+            let html = "";
+            //处理返回的内容
+            for(let d of data){
+                let single = "<div class='single-rect'>"+
+                    "<br>"+
+                    "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
+                    "<div><span class='theme'>#law#</span> <span class='date'>发表于"+d.date+"</span></div>"+
+                    "<br></div>";
+
+                html+=single;
+            }
+
+            document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+        })
+        .catch(error => console.error('error:',error));
+}
+
+function loadJob(){
+    addContent();
+    document.getElementById("home").style.backgroundColor = "transparent";
+    document.getElementById("help").style.backgroundColor = "transparent";
+    document.getElementById("learn").style.backgroundColor = "transparent";
+    document.getElementById("psychogical").style.backgroundColor = "transparent";
+    document.getElementById("health").style.backgroundColor = "transparent";
+    document.getElementById("law").style.backgroundColor = "transparent";
+    document.getElementById("job").style.backgroundColor = "skyblue";
+    document.getElementById("other").style.backgroundColor = "transparent";
+
+    //进行异步请求
+    fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateJob')
+        .then(response => response.json())
+        .then(data => {
+            //处理返回的内容
+            //处理返回的内容
+            let html = "";
+            //处理返回的内容
+            for(let d of data){
+                let single = "<div class='single-rect'>"+
+                    "<br>"+
+                    "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
+                    "<div><span class='theme'>#job#</span> <span class='date'>发表于"+d.date+"</span></div>"+
+                    "<br></div>";
+
+                html+=single;
+            }
+
+            document.getElementById("otherPage").innerHTML = html+"<br><br>";
+
+        })
+        .catch(error => console.error('error:',error));
+
+}
+
+function loadOther() {
+    addContent();
+    document.getElementById("home").style.backgroundColor = "transparent";
+    document.getElementById("help").style.backgroundColor = "transparent";
+    document.getElementById("learn").style.backgroundColor = "transparent";
+    document.getElementById("psychogical").style.backgroundColor = "transparent";
+    document.getElementById("health").style.backgroundColor = "transparent";
+    document.getElementById("law").style.backgroundColor = "transparent";
+    document.getElementById("job").style.backgroundColor = "transparent";
+    document.getElementById("other").style.backgroundColor = "skyblue";
+
+    //进行异步请求
+    fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=updateOther')
+        .then(response => response.json())
+        .then(data => {
+            //处理返回的内容
+            //处理返回的内容
+            let html = "";
+            //处理返回的内容
+            for (let d of data) {
+                let single = "<div class='single-rect'>" +
+                    "<br>" +
+                    "<div class='use'><div class='icon-person'><img class='icon-image1' src='" + d.icon + "' alt='faild'></div>" +
+                    "<div class='name'>" + d.name + " :</div></div>" +
+                    "<a href='reply.jsp?id=" + d.qid + "'><div class='cont'>" + d.content + "</div></a>" +
+                    "<div><span class='theme'>#other#</span> <span class='date'>发表于" + d.date + "</span> </div>" +
+                    "<br></div>";
+
+                html += single;
+            }
+
+            document.getElementById("otherPage").innerHTML = html + "<br><br>";
+
+        })
+        .catch(error => console.error('error:', error));
 }
