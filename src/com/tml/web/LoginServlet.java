@@ -1,6 +1,7 @@
 package com.tml.web;
 
 import com.google.gson.Gson;
+import com.mysql.cj.xdevapi.Session;
 import com.tml.service.impl.LoginServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,6 +19,7 @@ public class LoginServlet extends HttpServlet {
 
     private String password = null;
     private String username = null;
+    private String valiCode = null;
     private LoginServiceImpl loginService = new LoginServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,8 +28,12 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         username = request.getParameter("username");
         password = request.getParameter("password");
+        valiCode = request.getParameter("validate");
+        String validate1 = (String)session.getAttribute("validateCode");
+        System.out.println("vali"+validate1);
 
 
         /* 从数据库中找出该id的对应的pwd，比较是否一样 */
@@ -36,9 +42,9 @@ public class LoginServlet extends HttpServlet {
         //整体而言，这段代码处理了用户的 GET 请求，根据用户登录的成功与否生成不同的 JSON 响应。
         // 如果登录成功，返回包含重定向路径的 JSON；如果登录失败，返回包含 "fin" 属性的 JSON。
         // 这种方式通常用于在客户端进行页面重定向或显示错误消息。
-        if(result.equals("success")){
+        if(result.equals("success")&&validate1.equals(valiCode)){
             //得到session
-            HttpSession session = request.getSession();
+//            session = request.getSession();
             //设置最长访问间隔时间是一天
             session.setMaxInactiveInterval(60*60*24);
             //将用户名存入session
@@ -60,7 +66,14 @@ public class LoginServlet extends HttpServlet {
             response.getWriter().write(json);
         }
         else{
-            String fin = "ok";
+            String fin = null;
+            if(valiCode.equals(validate1)){
+                 fin = "ok";
+            }
+            else{
+                 fin = "ok1";
+            }
+
             Map<String,Object> resultMap = new HashMap<>();
             resultMap.put("fin",fin);
             Gson gson = new Gson();

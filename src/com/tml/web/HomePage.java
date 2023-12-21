@@ -24,7 +24,7 @@ public class HomePage extends HttpServlet{
         //判断用户名是否存在
         if (username != null){
             //在一天内登录过，无需再次登录
-            response.sendRedirect("home.html");
+            response.sendRedirect("home.html?username="+username);
         }else {
             //没有登录，或者登录间隔大于1天。重定向到登陆界面
             //response.sendRedirect(request.getContextPath()+"/login.html");

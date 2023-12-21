@@ -95,5 +95,14 @@
         <url-pattern>/manageServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>validateCode</servlet-name>
+        <servlet-class>com.tml.web.ValidateCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>validateCode</servlet-name>
+        <url-pattern>/validateCode</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

@@ -12,7 +12,7 @@
     <div class="container">
         <div id="error" class="error"></div>
         <h2>登录</h2>
-        <form>
+        <form >
             <div class="form-group">
                 <label >Username:</label>
                 <input type="text" id="username" >
@@ -22,21 +22,25 @@
                 <input type="password" id="password" >
             </div>
 
-            <div class="container1">
-                <div class="v_code">
-                    <div class="input_code">
-                        <label for="inputCode" class="biaoqian">验证码：</label>
-                        <input type="text" id="inputCode" />
+<!--            <div class="container1">-->
+<!--                <div class="v_code">-->
+<!--                    <div class="input_code">-->
+<!--                        <label for="inputCode" class="biaoqian">验证码：</label>-->
+<!--                        <input type="text" id="inputCode" />-->
 
-                    </div>
-                    <div class="code_show">
-                        <span class="code" id="checkCode"></span>
-                        <a id="linkbt">看不清换一张</a>
-                    </div>
-                </div>
+<!--                    </div>-->
+<!--                    <div class="code_show">-->
+<!--                        <span class="code" id="checkCode"></span>-->
+<!--                        <a id="linkbt">看不清换一张</a>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-            </div>
-
+<!--            </div>-->
+            <span style="color: black; font-size: 16px; ">
+                验证码
+                <input id="login-validate" name="validate" type="text" placeholder="请输入验证码" style="font-size: 16px;width: 150px;"/>
+                <img id="img" src="http://localhost:8080/Pbhz/validateCode"  οnclick="changeImg()" style="margin-top: 10px"/>
+            </span>
 
             <button id="Button">Login</button>
 
