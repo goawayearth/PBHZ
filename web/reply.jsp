@@ -48,7 +48,7 @@
 
             session = request.getSession();
             String root = (String) session.getAttribute("username");
-            if ("root".equals(root) && (question.getName() != null && !question.getName().equals("root")) || "root".equals(question.getName())) {
+            if ("root".equals(root) && (question.getName() != null && !question.getName().equals("root")) || root.equals(question.getName())) {
 
                 out.println("<button style='margin-left: 10px ' onclick='deleteQuestion(\""+question.getQid()+"\")'>删除 </button>");
             }
