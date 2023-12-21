@@ -54,7 +54,14 @@ public class LoginServlet extends HttpServlet {
             //这两行的目的是将存储有关登录结果的信息的 resultMap 转换为 JSON 格式的字符串。
             // 这样做的原因是，你希望将这个 JSON 字符串发送回客户端作为 HTTP 响应的一部分。
             // 这样的操作通常用于通过网络传输结构化数据，例如在前端和后端之间进行通信。
-            String  path = "http://localhost:8080/Pbhz/home.html";
+            String  path = null;
+            if(!username.equals("root")){
+                path = "http://localhost:8080/Pbhz/home.html";
+            }
+            else{
+                path = "http://localhost:8080/Pbhz/manager.html";
+            }
+
             Map<String,Object> resultMap = new HashMap<>();
             resultMap.put("path",path);
             //这一行创建了一个 Gson 对象，该对象是 Gson 库中主要的操作入口。

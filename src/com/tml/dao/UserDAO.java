@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 有关账户的数据库操作
@@ -174,6 +176,66 @@ public class UserDAO {
 
 
 
+    }
+
+    public List<User> getNormalUser(){
+        List<User> userList = new ArrayList<>();
+        String sql = "select * from user where state = 1";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try{
+            connection = JdbcUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                User user = new User();
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setIconPath(resultSet.getString("icon"));
+
+                userList.add(user);
+            }
+
+        }catch (Exception e){
+
+        }finally {
+            JdbcUtil.close(connection);
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(resultSet);
+        }
+
+        return userList;
+    }
+
+    public List<User> getBlackList(){
+        List<User> userList = new ArrayList<>();
+        String sql = "select * from user where state = 0";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try{
+            connection = JdbcUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                User user = new User();
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setIconPath(resultSet.getString("icon"));
+
+                userList.add(user);
+            }
+
+        }catch (Exception e){
+
+        }finally {
+            JdbcUtil.close(connection);
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(resultSet);
+        }
+
+        return userList;
     }
 
 

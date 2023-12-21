@@ -39,4 +39,16 @@ public class UserInfoImpl implements UserInform {
         UserDAO userDAO = new UserDAO();
         userDAO.deleteUser(username);
     }
+
+    @Override
+    public List<User> getNormalUser() {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getNormalUser();
+    }
+
+    @Override
+    public List<User> getBlackList() {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getBlackList();
+    }
 }

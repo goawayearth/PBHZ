@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>后台管理</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: #555;
+      color: #fff;
+      padding: 4px;
+      text-align: center;
+    }
+
+    .menu {
+      display: flex;
+      height: 620px;
+      /*height: 100%;*/
+    }
+
+    .sidebar {
+      background-color: #555;
+      color: #fff;
+      padding: 15px;
+      width: 200px;
+    }
+
+    .menu-item {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .menu-item1 {
+      padding: 10px;
+      margin: 5px;
+      margin-left: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .menu-item:hover {
+      background-color: #666;
+    }
+
+    .menu-item1:hover {
+      background-color: #666;
+    }
+
+
+    .submenu {
+      display: none;
+      list-style: none;
+      padding-left: 15px;
+    }
+
+    .menu-item:hover .submenu {
+      display: block;
+    }
+
+    .submenu-item {
+      padding: 8px;
+      margin: 2px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submenu-item:hover {
+      background-color: #666;
+    }
+
+    .content {
+      background-color:#d4d7d7;
+      width: 100%;
+      color: white;
+
+    }
+    .search-div{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      /*padding: 10px;*/
+    }
+
+    .search-input{
+      margin: 3px;
+      margin-bottom: 10px;
+    }
+
+    .search-btn{
+      margin: 3px;
+      margin-right: 10px;
+    }
+
+    .main-mess{
+      width: 100%;
+      height: 590px;
+      /*background-color: #288dd1;*/
+      overflow: auto;
+    }
+    .sp{
+      display: flex;
+    }
+
+    .sp span{
+      /*margin-left: 100px;*/
+      /*margin-right: 100px;*/
+      padding-left: 100px;
+      width: 150px;
+      color: black;
+      display: block;
+    }
+    /*.sp :hover{*/
+    /*  background-color: white;*/
+    /*  cursor: pointer;*/
+    /*}*/
+
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <h1>朋辈互助后台管理</h1>
+</div>
+
+<div class="menu">
+  <div class="sidebar">
+    <div class="menu-item">
+      用户管理
+    </div>
+    <div class="menu-item1" id="normalUser">
+      正常用户
+    </div>
+    <div class="menu-item1" id="blacklist">
+      黑名单用户
+    </div>
+    <div class="menu-item">
+      文章管理
+    </div>
+    <div class="menu-item1" id="learning">
+      学术之林
+    </div>
+    <div class="menu-item1" id="psychogical">
+      心灵氧吧
+    </div>
+    <div class="menu-item1" id="health">
+      健康部落
+    </div>
+    <div class="menu-item1" id="law">
+      法律咨询
+    </div>
+    <div class="menu-item1" id="job">
+      就业锦囊
+    </div>
+    <div class="menu-item1" id="other">
+      其他
+    </div>
+    <div class="menu-item" id="commentManage">评论管理</div>
+    <!-- 添加其他菜单项 -->
+  </div>
+
+  <div class="content">
+    <!-- 在这里放置页面内容 -->
+    <div class="search-div">
+      <form>
+      <input class="search-input" id="search-input" placeholder="搜索">
+      <button type="submit" class="search-btn" id="search-btn">搜索</button>
+      </form>
+    </div>
+
+    <div class="main-mess" id="main-mess">
+
+    </div>
+  </div>
+</div>
+
+<script>
+  let option;
+  let normalUser,blacklist,learning,psychogical,health,law,job,other,commentManage;
+
+
+  window.onload = function () {
+
+    normalUser = document.getElementById("normalUser");
+    normalUser.onclick = function (){loadNormalUser();}
+
+    blacklist = document.getElementById("blacklist");
+    blacklist.onclick = function (){ loadBlackList();}
+
+    learning = document.getElementById("learning");
+    learning.onclick = function (){ loadLearning();}
+
+    psychogical = document.getElementById("psychogical");
+    psychogical.onclick = function (){ loadPsychogical();}
+
+    health = document.getElementById("health");
+    health.onclick = function (){ loadHealth();}
+
+    law = document.getElementById("law");
+    law.onclick = function (){ loadLaw();}
+
+    job = document.getElementById("job");
+    job.onclick = function (){ loadJob();}
+
+    other = document.getElementById("other");
+    other.onclick = function (){ loadOther();}
+
+    commentManage = document.getElementById("commentManage");
+    commentManage.onclick = function (){ loadComment();}
+
+    option = normalUser;
+    loadNormalUser();
+
+
+  }
+
+
+
+  function loadNormalUser(){
+    option = normalUser;
+    makeALLTran();
+    normalUser.style.backgroundColor = "red";
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=loadNormalUser")
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>拉黑</span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button>确认拉黑</button></span><span><button>删除</button></span></div><hr>"
+                html += single;
+              }
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+
+  }
+
+  function loadBlackList(){
+    option = blacklist;
+    makeALLTran();
+    blacklist.style.backgroundColor = "red";
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=loadBlackList")
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>恢复正常</span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button>确认恢复</button></span><span><button>删除</button></span></div><hr>"
+                html += single;
+              }
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+
+  function loadLearning(){
+    option = learning;
+    makeALLTran();
+    learning.style.backgroundColor = "red";
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=loadLearning")
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+  function loadPsychogical(){
+    option = psychogical;
+    makeALLTran();
+    psychogical.style.backgroundColor = "red";
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=loadPsychogical")
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+
+  function loadHealth(){
+    option=health;
+    makeALLTran();
+    health.style.backgroundColor = "red";
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=loadHealth")
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+
+  function loadLaw(){
+    option = law;
+    makeALLTran();
+    law.style.backgroundColor = "red";
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=loadLaw")
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+
+  function loadJob(){
+    option = job;
+    makeALLTran();
+    job.style.backgroundColor = "red";
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=loadJob")
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+
+  function loadOther(){
+    option = other;
+    makeALLTran();
+    other.style.backgroundColor = "red";
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=loadOther")
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+
+  function loadComment(){
+    option = commentManage;
+    makeALLTran();
+    commentManage.style.backgroundColor = "red";
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=loadComment")
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+
+  function makeALLTran(){
+    normalUser.style.backgroundColor = "transparent";
+    blacklist.style.backgroundColor = "transparent";
+    learning.style.backgroundColor = "transparent";
+    psychogical.style.backgroundColor = "transparent";
+    health.style.backgroundColor = "transparent";
+    law.style.backgroundColor = "transparent";
+    job.style.backgroundColor = "transparent";
+    other.style.backgroundColor = "transparent";
+    commentManage.style.backgroundColor = "transparent";
+  }
+
+
+</script>
+
+</body>
+</html>

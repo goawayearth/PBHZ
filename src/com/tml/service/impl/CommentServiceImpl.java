@@ -5,6 +5,7 @@ import com.tml.dao.CommentDAO;
 import com.tml.service.CommentService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class CommentServiceImpl implements CommentService {
     CommentDAO commentDao = new CommentDAO(); // 实例化 CommentDao，具体方式可能需要根据你的项目结构来调整
@@ -19,5 +20,10 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void deleteComment(String cid) throws SQLException {
         commentDao.deleteComment(cid);
+    }
+
+    @Override
+    public List<Comment> getComment() {
+        return commentDao.getComment();
     }
 }

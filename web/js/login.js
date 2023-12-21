@@ -15,14 +15,14 @@ window.onload = function(){
                     console.log(data)
                     if (data.fin === "ok") {
                         document.getElementById("error").innerText = "账号或密码错误";
-                        document.getElementById("username").innerText = "";
-                        document.getElementById("password").innerText = "";
-                        document.getElementById('login-validate').innerText = '';
+                        document.getElementById("username").value = "";
+                        document.getElementById("password").value = "";
+                        document.getElementById('login-validate').value = '';
                     } else if (data.fin === "ok1") {
                         document.getElementById("error").innerText = "验证码错误";
-                        document.getElementById("username").innerText = "";
-                        document.getElementById("password").innerText = "";
-                        document.getElementById('login-validate').innerText = '';
+                        // document.getElementById("username").value = "";
+                        // document.getElementById("password").value = "";
+                        document.getElementById('login-validate').value = '';
                     } else {
                         document.getElementById("error").inner = "正确";
                         var path = String(data.path);

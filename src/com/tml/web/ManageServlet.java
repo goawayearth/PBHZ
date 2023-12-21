@@ -1,5 +1,9 @@
 package com.tml.web;
 
+import com.google.gson.Gson;
+import com.tml.bean.Comment;
+import com.tml.bean.Question;
+import com.tml.bean.User;
 import com.tml.service.UserInform;
 import com.tml.service.impl.CommentServiceImpl;
 import com.tml.service.impl.QuestionServiceImpl;
@@ -13,9 +17,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name="manageServlet")
 public class ManageServlet extends HttpServlet {
+    Gson gson = new Gson();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
@@ -27,6 +33,7 @@ public class ManageServlet extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
 
         String action = request.getParameter("action");
+        System.out.println("action="+action);
 
         try {
 
@@ -61,5 +68,72 @@ public class ManageServlet extends HttpServlet {
         commentService.deleteComment(cid);
         response.getWriter().write("success");
     }
+
+    protected void loadNormalUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        UserInfoImpl userInfo = new UserInfoImpl();
+        List<User> userList = userInfo.getNormalUser();
+        String json = gson.toJson(userList);
+        response.getWriter().write(json);
+
+    }
+
+    protected void loadBlackList(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        UserInfoImpl userInfo = new UserInfoImpl();
+        List<User> userList = userInfo.getBlackList();
+        String json = gson.toJson(userList);
+        response.getWriter().write(json);
+    }
+
+    protected void loadLearning(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.getLearning();
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+
+    protected void loadPsychogical(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.getPsychogical();
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+
+    protected void loadHealth(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.getHealth();
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+
+    protected void loadLaw(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.getLaw();
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+
+    protected void loadJob(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.getJob();
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+
+    protected void loadOther(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.getOther();
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+    protected void loadComment(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        CommentServiceImpl commentService = new CommentServiceImpl();
+        List<Comment> commentList = commentService.getComment();
+        String json = gson.toJson(commentList);
+        response.getWriter().write(json);
+    }
+
+
+
+
 
 }
