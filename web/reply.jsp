@@ -34,7 +34,7 @@
             }
 
             out.println(
-                    "<br>"+"<div class='use'><div class='icon-person'><img class='icon-image1' src='"+question.getIcon()+"' alt='faild'></div>"+
+                    "<br>"+"<div class='use'><div class='icon-person'><a href='users.jsp?username="+question.getName()+"'><img class='icon-image1' src='"+question.getIcon()+"' alt='faild'></a></div>"+
 
                             "<div class='name'><a href='users.jsp?username="+question.getName()+"'>"+question.getName()+" :</a></div></div>" +
                             "<div class='cont'>"+question.getContent()+"</div>" );
@@ -116,7 +116,7 @@
                     let html = "";
                     //处理返回的内容
                     for(let d of data){
-                        let single = "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
+                        let single = "<div class='use'><div class='icon-person'><a href='users.jsp?username="+d.name+"'><img class='icon-image1' src='"+d.icon+"' alt='faild'></a></div>"+
                             "<div class='name'><a href='users.jsp?username="+d.name+"'>" + d.name + " :</a></div></div>" +
                             "<div class='cont'>" + d.content + "</div>";
 

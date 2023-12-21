@@ -43,15 +43,22 @@
 <%--      <input type="button" value="确认修改头像" onclick="submitIconForm()">--%>
 <%--    </form>--%>
 
-    <% out.println("<div class='user-name'>用户名:"+user.getUsername()+" </div>");
+    <%
     session = request.getSession();
     String root = (String) session.getAttribute("username");
+    if(root.equals(loggedInUserName)){
+      out.println(" <form id=\"iconForm\" enctype=\"multipart/form-data\">\n" +
+              "      <input class=\"icon-up\" type=\"file\" id=\"fileUpload\"> <!-- 文件上传字段 -->\n" +
+              "      <input type=\"button\" value=\"确认修改头像\" onclick=\"submitIconForm()\">\n" +
+              "    </form>");
+    }
+      out.println("<div class='user-name'>用户名:"+user.getUsername()+" </div>");
     if(root.equals("root") && (!loggedInUserName.equals("root"))){
       out.println("<button class='rootButton' onclick='deleteUser(\""+loggedInUserName+"\")'>删除用户 </button>");
     }
       System.out.println("#$^%"+user.getIconPath());  %>
 
-    <div class="my-pub">我的发表 :</div>
+    <div class="my-pub">发表 :</div>
 
 
   </div>
