@@ -77,4 +77,23 @@
         <url-pattern>/postServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>detectRoot</servlet-name>
+        <servlet-class>com.tml.web.DetectRoot</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>detectRoot</servlet-name>
+        <url-pattern>/detectRoot</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>manageServlet</servlet-name>
+        <servlet-class>com.tml.web.ManageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manageServlet</servlet-name>
+        <url-pattern>/manageServlet</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

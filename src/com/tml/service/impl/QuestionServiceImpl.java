@@ -10,4 +10,11 @@ public class QuestionServiceImpl implements QuestionService {
         QuestionDAO questionDAO = new QuestionDAO();
         questionDAO.save(question);
     }
+
+    @Override
+    public void deleteQuestion(String qid) {
+
+        QuestionDAO questionDAO = new QuestionDAO();
+        questionDAO.deleteQuestion(qid);
+    }
 }

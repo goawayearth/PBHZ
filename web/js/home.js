@@ -63,7 +63,7 @@ window.onload = function(){
                     let single = "<div class='single-rect'>"+
                         "<br>"+
                         "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                        "<div class='name'>"+d.name+" :</div></div>" +
+                        "<div class='name'><a href='users.jsp?username="+d.name+"'>"+d.name+" :</a></div></div>" +
                         "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                         "<div><span class='theme'>#"+d.type+"#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                         "<br></div>";
@@ -266,7 +266,7 @@ function loadHelp(){
             for(let d of data){
                 let single ="<div class='single-rect'><br>"+
                     "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                    "<div class='name'>"+d.name+":</div></div>" +
+                    "<div class='name'><a href='users.jsp?username="+d.name+"'>"+d.name+" :</a></div></div>" +
                     "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                     "<div><span class='theme'>#help#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                     "<br></div>";
@@ -304,7 +304,7 @@ function loadLearn(){
                 let single ="<div class='single-rect'>"+
                     "<br>"+
                     "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<div class='name'><a href='users.jsp?username="+d.name+"'>"+d.name+" :</a></div></div>" +
                     "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                     "<div><span class='theme'>#learn#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                     "<br></div>";
@@ -343,7 +343,7 @@ function loadPsychogical(){
                 let single = "<div class='single-rect'>"+
                     "<br>"+
                     "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<div class='name'><a href='users.jsp?username="+d.name+"'>"+d.name+" :</a></div></div>" +
                     "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                     "<div><span class='theme'>#psychogical#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                     "<br></div>";
@@ -383,7 +383,7 @@ function loadHealth(){
                 let single = "<div class='single-rect'>"+
                     "<br>"+
                     "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<div class='name'><a href='users.jsp?username="+d.name+"'>"+d.name+" :</a></div></div>" +
                     "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                     "<div><span class='theme'>#health#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
                     "<br></div>";
@@ -421,7 +421,7 @@ function loadLaw(){
                 let single = "<div class='single-rect'>"+
                     "<br>"+
                     "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<div class='name'><a href='users.jsp?username="+d.name+"'>"+d.name+" :</a></div></div>" +
                     "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                     "<div><span class='theme'>#law#</span> <span class='date'>发表于"+d.date+"</span></div>"+
                     "<br></div>";
@@ -458,7 +458,7 @@ function loadJob(){
                 let single = "<div class='single-rect'>"+
                     "<br>"+
                     "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                    "<div class='name'>"+d.name+" :</div></div>" +
+                    "<div class='name'><a href='users.jsp?username="+d.name+"'>"+d.name+" :</a></div></div>" +
                     "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
                     "<div><span class='theme'>#job#</span> <span class='date'>发表于"+d.date+"</span></div>"+
                     "<br></div>";
@@ -496,7 +496,7 @@ function loadOther() {
                 let single = "<div class='single-rect'>" +
                     "<br>" +
                     "<div class='use'><div class='icon-person'><img class='icon-image1' src='" + d.icon + "' alt='faild'></div>" +
-                    "<div class='name'>" + d.name + " :</div></div>" +
+                    "<div class='name'><a href='users.jsp?username="+d.name+"'>"+d.name+" :</a></div></div>" +
                     "<a href='reply.jsp?id=" + d.qid + "'><div class='cont'>" + d.content + "</div></a>" +
                     "<div><span class='theme'>#other#</span> <span class='date'>发表于" + d.date + "</span> </div>" +
                     "<br></div>";

@@ -55,7 +55,7 @@ public class UserDAO {
 
     public void create(String username,String password) {
 
-        String sql = "insert into user values(?,?)";
+        String sql = "insert into user(username,password) values(?,?)";
         Connection connection = null;
         PreparedStatement pstmt = null;
         try {
@@ -115,5 +115,67 @@ public class UserDAO {
 
 
     }
+
+    public void deleteUser(String username){
+        CommentDAO commentDAO = new CommentDAO();
+        QuestionDAO questionDAO = new QuestionDAO();
+        //删掉所有问题和图片
+        //删掉所有评论和图片
+        //删掉用户和图片
+        System.out.println("进入了deleteUser()");
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try{
+            connection = JdbcUtil.getConnection();
+            String sql2 = "select * from comment where name=?";
+            preparedStatement = connection.prepareStatement(sql2);
+            preparedStatement.setString(1,username);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String cid = resultSet.getString("cid");
+                commentDAO.deleteComment(cid);
+            }
+
+            String sql3 = "select * from question where name=?";
+            preparedStatement = connection.prepareStatement(sql3);
+            preparedStatement.setString(1,username);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String qid = resultSet.getString("qid");
+                questionDAO.deleteQuestion(qid);
+            }
+
+            String sql1 = "select * from user where username=?";
+            preparedStatement = connection.prepareStatement(sql1);
+            preparedStatement.setString(1,username);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                String icon = resultSet.getString("icon");
+                if(icon!=null){
+                    DeleteImg.deleteImg(icon);
+                }
+            }
+
+            String sql4 = "delete from user where username = ?";
+            preparedStatement = connection.prepareStatement(sql4);
+            preparedStatement.setString(1,username);
+            preparedStatement.executeUpdate();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.close(connection);
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(resultSet);
+        }
+
+
+
+
+    }
+
+
 
 }

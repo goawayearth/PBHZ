@@ -12,4 +12,6 @@ public interface UserInform {
     public User getUser(String username);
 
     public List<Question> getQuestion(String username);
+
+    public void deleteUser(String username);
 }

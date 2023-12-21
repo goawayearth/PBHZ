@@ -32,4 +32,11 @@ public class UserInfoImpl implements UserInform {
         }catch (Exception e){}
         return questions;
     }
+
+
+    @Override
+    public void deleteUser(String username) {
+        UserDAO userDAO = new UserDAO();
+        userDAO.deleteUser(username);
+    }
 }

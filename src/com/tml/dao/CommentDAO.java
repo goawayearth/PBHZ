@@ -1,5 +1,6 @@
 package com.tml.dao;
 
+import com.alibaba.druid.util.jdbc.LocalResultSet;
 import com.tml.bean.Comment;
 import com.tml.util.JdbcUtil;
 
@@ -36,6 +37,9 @@ public class CommentDAO {
             comment.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
             comments.add(comment);
         }
+        JdbcUtil.close(preparedStatement);
+        JdbcUtil.close(connection);
+        JdbcUtil.close(resultSet);
         return comments;
     }
 
@@ -86,7 +90,40 @@ public class CommentDAO {
                     e.printStackTrace();
                     // 处理异常
                 }
+                finally {
+                    JdbcUtil.close(preparedStatement);
+                    JdbcUtil.close(connection);
+                }
             }
+        }
+
+        public void deleteComment(String cid) throws SQLException {
+            Connection connection = null;
+            PreparedStatement preparedStatement = null;
+            System.out.println("进入了deleteComment()");
+            //删除评论和图片
+            ResultSet resultSet = null;
+            String sql1="select * from comment where cid=?";
+            connection=JdbcUtil.getConnection();
+            preparedStatement=connection.prepareStatement(sql1);
+            preparedStatement.setString(1,cid);
+            resultSet = preparedStatement.executeQuery();
+            String iconpath = null;
+            if(resultSet.next()){
+                iconpath = resultSet.getString("filename");
+            }
+            if(iconpath!=null){
+                DeleteImg.deleteImg(iconpath);
+            }
+
+            String sql2 = "delete from comment where cid = ?";
+            preparedStatement = connection.prepareStatement(sql2);
+            preparedStatement.setString(1,cid);
+            preparedStatement.executeUpdate();
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(connection);
+            JdbcUtil.close(resultSet);
+
         }
     }
 

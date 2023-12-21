@@ -83,7 +83,10 @@
     formData.append('Content', document.getElementById('content').value);
     formData.append('uid', document.getElementById('uid').value);
     formData.append('category', document.getElementById('category').value);
-    formData.append('fileUpload', document.getElementById('fileUpload').files[0]);
+    if(document.getElementById('fileUpload').files[0]){
+      formData.append('fileUpload', document.getElementById('fileUpload').files[0]);
+    }
+
 
     // Send the data using fetch
     fetch('/Pbhz/postServlet', {

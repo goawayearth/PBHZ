@@ -129,7 +129,7 @@ img{
 
 .icon-image{
     width: 150px;
-    height: 150px;
+    /*height: 150px;*/
     margin: 0px;
 }
 
@@ -226,5 +226,8 @@ a{
     margin: 0px;
 }
 
-
+.rootButton{
+    margin: 30px;
+    margin-bottom: 0px;
+}
 

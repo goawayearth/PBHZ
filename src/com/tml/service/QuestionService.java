@@ -4,4 +4,5 @@ import com.tml.bean.Question;
 
 public interface QuestionService {
     public void saveQuestion(Question question);
+    public void deleteQuestion(String qid);
 }

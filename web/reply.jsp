@@ -36,7 +36,7 @@
             out.println(
                     "<br>"+"<div class='use'><div class='icon-person'><img class='icon-image1' src='"+question.getIcon()+"' alt='faild'></div>"+
 
-                            "<div class='name'>"+question.getName()+" :</div></div>" +
+                            "<div class='name'><a href='users.jsp?username="+question.getName()+"'>"+question.getName()+" :</a></div></div>" +
                             "<div class='cont'>"+question.getContent()+"</div>" );
             if(question.getFilepath()!=null)
             {
@@ -44,9 +44,17 @@
             }
 
             out.println(    "<div><span class='theme'>#"+question.getType()+"#</span> <span class='date'>发表于"+
-                            question.getDate()+"</span></div>"+
-                            "<br>"
-            );
+                            question.getDate()+"</span>");
+
+            session = request.getSession();
+            String root = (String) session.getAttribute("username");
+            if ("root".equals(root) && (question.getName() != null && !question.getName().equals("root")) || "root".equals(question.getName())) {
+
+                out.println("<button style='margin-left: 10px ' onclick='deleteQuestion(\""+question.getQid()+"\")'>删除 </button>");
+            }
+
+
+            out.println("</div><br>");
             System.out.println("时间："+question.getDate());
         %>
     </div>
@@ -76,14 +84,29 @@
     <script>
 
         let qid;
+        let user;
         window.onload = function(){
+
+
             let urlSearchParams = new URLSearchParams(window.location.search);
             qid = urlSearchParams.get('id');
             console.log(qid)
             console.log("你好")
-            loadComment();
+
+
+            fetch('http://localhost:8080/Pbhz/detectRoot')
+                .then(response => response.text())
+                .then(data => {
+                    data1 = data;
+                    loadComment();
+                })
+                .catch(error => console.error('error:',error));
+
+
+
 
         }
+
 
         function loadComment(){
             fetch('http://localhost:8080/Pbhz/homeLoadServlet?action=getComment&qid='+qid)
@@ -94,14 +117,21 @@
                     //处理返回的内容
                     for(let d of data){
                         let single = "<div class='use'><div class='icon-person'><img class='icon-image1' src='"+d.icon+"' alt='faild'></div>"+
-                            "<div class='name'>" + d.name + " :</div></div>" +
+                            "<div class='name'><a href='users.jsp?username="+d.name+"'>" + d.name + " :</a></div></div>" +
                             "<div class='cont'>" + d.content + "</div>";
 
                         if(d.filename){
                             single += "<div><img class='commentImage' src='" + d.filename + "' alt='Uploaded Image'></div>"
                         }
 
-                        single += ("<div><span class='date d1'>" + d.date + "</span> </div>"+"<br><hr class='hr'>")
+                        single += ("<div><span class='date d1'>" + d.date + "</span> ");
+                        if (data1 == 'root' || data1 == d.name) {
+                            let cid = d.cid;
+                            single += "<button id='commentDelete' onclick='deleteComment(\"" + cid + "\")'>删除</button>";
+                        }
+
+                        let end = "</div>"+"<br><hr class='hr'>";
+                        single+=end;
 
                         html+=single;
                     }
@@ -146,6 +176,54 @@
                 });
         }
 
+        function deleteComment(cid){
+            console.log("jinlail"+cid);
+
+            fetch('/Pbhz/manageServlet?action=deleteComment&cid='+cid)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text(); // assuming server returns JSON
+                })
+                .then(data => {
+                    // Handle the response data as needed
+                    console.log("data:"+data);
+                    loadComment();
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+
+
+        }
+
+        function deleteQuestion(qid){
+            console.log("进入了qid")
+
+            fetch('http://localhost:8080/Pbhz/manageServlet?action=deleteQuestion&qid='+qid)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text(); // assuming server returns JSON
+                })
+                .then(data => {
+                    // Handle the response data as needed
+                    console.log("data:"+data);
+                    // window.history.back();
+                    // window.location.go(-1);
+                    // window.location.reload();
+                    // window.history.back();
+                    // window.location.reload(true);
+                    window.location.replace(document.referrer);
+
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+
+        }
 
     </script>
 

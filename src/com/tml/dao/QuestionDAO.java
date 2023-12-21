@@ -44,6 +44,11 @@ public class QuestionDAO {
         catch(Exception e){
             e.printStackTrace();
         }
+        finally {
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(connection);
+            JdbcUtil.close(resultSet);
+        }
         return questions;
     }
 
@@ -84,6 +89,11 @@ public class QuestionDAO {
         catch(Exception e){
             e.printStackTrace();
         }
+        finally {
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(connection);
+            JdbcUtil.close(resultSet);
+        }
         return questions;
     }
 
@@ -116,6 +126,11 @@ public class QuestionDAO {
         }
         catch(Exception e){
             e.printStackTrace();
+        }
+        finally {
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(connection);
+            JdbcUtil.close(resultSet);
         }
         return question;
 
@@ -154,6 +169,11 @@ public class QuestionDAO {
         catch(Exception e){
             e.printStackTrace();
         }
+        finally {
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(connection);
+            JdbcUtil.close(resultSet);
+        }
 
         return questions;
     }
@@ -185,6 +205,10 @@ public class QuestionDAO {
         }
         catch(Exception e){
             e.printStackTrace();
+        }
+        finally {
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(connection);
         }
 
     }
@@ -222,8 +246,59 @@ public class QuestionDAO {
         catch(Exception e){
             e.printStackTrace();
         }
+        finally {
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(connection);
+        }
 
         return questions;
+    }
+
+    public void deleteQuestion(String qid){
+        CommentDAO commentDAO = new CommentDAO();
+        //删除所有评论和评论图片
+        //删除问题和图片
+        System.out.println("进入了deleteQuestion()");
+        Connection connection=null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String sql1 = "select * from comment where qid=?";
+
+        try{
+            connection = JdbcUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql1);
+            preparedStatement.setString(1,qid);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String cid = resultSet.getString("cid");
+                commentDAO.deleteComment(cid);
+            }
+            String sql2 = "select * from question where qid=?";
+            preparedStatement = connection.prepareStatement(sql2);
+            preparedStatement.setString(1,qid);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                String iconpath = resultSet.getString("filepath");
+                if(iconpath!=null){
+                    DeleteImg.deleteImg(iconpath);
+                }
+            }
+
+            String sql3 = "delete from question where qid=?";
+            preparedStatement = connection.prepareStatement(sql3);
+            preparedStatement.setString(1,qid);
+            preparedStatement.executeUpdate();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(connection);
+        }
+
+
     }
 
 
