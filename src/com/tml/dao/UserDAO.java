@@ -42,6 +42,7 @@ public class UserDAO {
                 user.setPassword(resultSet.getString("password"));
                 user.setUsername(resultSet.getString("username"));
                 user.setIconPath(resultSet.getString("icon"));
+                user.setState(resultSet.getInt("state"));
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -238,6 +239,115 @@ public class UserDAO {
         return userList;
     }
 
+    public void addBlack(String username){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "update user set state=0 where username=?";
+        try{
+            connection = JdbcUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,username);
+            preparedStatement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.close(connection);
+            JdbcUtil.close(preparedStatement);
+        }
 
+
+    }
+
+    public void removeBlack(String username){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "update user set state=1 where username=?";
+
+        try{
+            connection = JdbcUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,username);
+            preparedStatement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.close(connection);
+            JdbcUtil.close(preparedStatement);
+        }
+
+    }
+
+    public List<User> searchNormalUser(String key) {
+        List<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM user WHERE state = 1 AND username LIKE ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = JdbcUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + key + "%"); // Use "%" for wildcard matching
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                User user = new User();
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setIconPath(resultSet.getString("icon"));
+                userList.add(user);
+            }
+
+        } catch (SQLException e) {
+            // Handle the exception, log it, or throw a custom exception
+            e.printStackTrace(); // Log the exception or handle it according to your logging strategy
+
+        } finally {
+            // Close resources in a finally block
+            JdbcUtil.close(connection);
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(resultSet);
+        }
+
+        return userList;
+    }
+
+
+    public List<User> searchBlackList(String key){
+        List<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM user WHERE state = 0 AND username LIKE ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = JdbcUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + key + "%"); // Use "%" for wildcard matching
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                User user = new User();
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setIconPath(resultSet.getString("icon"));
+                userList.add(user);
+            }
+
+        } catch (SQLException e) {
+            // Handle the exception, log it, or throw a custom exception
+            e.printStackTrace(); // Log the exception or handle it according to your logging strategy
+
+        } finally {
+            // Close resources in a finally block
+            JdbcUtil.close(connection);
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(resultSet);
+        }
+
+        return userList;
+    }
 
 }

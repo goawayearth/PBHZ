@@ -72,6 +72,14 @@ public class LoginServlet extends HttpServlet {
             String json = gson.toJson(resultMap);
             response.getWriter().write(json);
         }
+        else if(result.equals("black")){
+            String fin = "ok2";
+            Map<String,Object> resultMap = new HashMap<>();
+            resultMap.put("fin",fin);
+            Gson gson = new Gson();
+            String json = gson.toJson(resultMap);
+            response.getWriter().write(json);
+        }
         else{
             String fin = null;
             if(valiCode.equals(validate1)){

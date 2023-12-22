@@ -51,4 +51,28 @@ public class UserInfoImpl implements UserInform {
         UserDAO userDAO = new UserDAO();
         return userDAO.getBlackList();
     }
+
+    @Override
+    public void addBlack(String username) {
+        UserDAO userDAO = new UserDAO();
+        userDAO.addBlack(username);
+    }
+
+    @Override
+    public void removeBlack(String username) {
+        UserDAO userDAO = new UserDAO();
+        userDAO.removeBlack(username);
+    }
+
+    @Override
+    public List<User> searchNormalUser(String key) {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.searchNormalUser(key);
+    }
+
+    @Override
+    public List<User> searchBlackList(String key) {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.searchBlackList(key);
+    }
 }

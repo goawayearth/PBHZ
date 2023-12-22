@@ -18,4 +18,14 @@ public interface UserInform {
     public List<User> getNormalUser();
 
     public List<User> getBlackList();
+
+    public void addBlack(String username);
+
+    public void removeBlack(String username);
+
+    public List<User> searchNormalUser(String key);
+    public List<User> searchBlackList(String key);
+
+
+
 }

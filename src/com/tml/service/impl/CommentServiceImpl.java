@@ -13,7 +13,6 @@ public class CommentServiceImpl implements CommentService {
     public void addComment(Comment comment) {
         // 在这里实现将评论添加到数据库的逻辑
         // 你可以调用 DAO 或者其他持久层操作
-
         commentDao.addComment(comment);
     }
 
@@ -25,5 +24,10 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<Comment> getComment() {
         return commentDao.getComment();
+    }
+
+    @Override
+    public List<Comment> searchComment(String key) {
+        return commentDao.searchComment(key);
     }
 }

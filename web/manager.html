@@ -192,6 +192,27 @@
 
   window.onload = function () {
 
+    document.getElementById("search-btn").onclick = function (){
+      //实现搜索功能
+      //运用option
+      let key = document.getElementById("search-input").value;
+      console.log(key)
+      switch (option){
+        case normalUser: searchNormalUser(key); break;
+        case blacklist: searchBlackList(key); break;
+        case learning: searchLearning(key);break;
+        case psychogical: searchPsychogical(key);break;
+        case health: searchHealth(key); break;
+        case law: searchLaw(key);break;
+        case job: searchJob(key);break;
+        case other: searchOther(key);break;
+        case commentManage: searchComment(key); break;
+      }
+
+      return false;
+
+    }
+
     normalUser = document.getElementById("normalUser");
     normalUser.onclick = function (){loadNormalUser();}
 
@@ -239,7 +260,7 @@
               let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>拉黑</span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button>确认拉黑</button></span><span><button>删除</button></span></div><hr>"
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='addBlack(\""+d.username+"\")'>确认拉黑</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
                 html += single;
               }
               document.getElementById("main-mess").innerHTML = html;
@@ -262,7 +283,7 @@
               let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>恢复正常</span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button>确认恢复</button></span><span><button>删除</button></span></div><hr>"
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='removeBlack(\""+d.username+"\")'>确认恢复</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
                 html += single;
               }
               document.getElementById("main-mess").innerHTML = html;
@@ -284,7 +305,7 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</buttononclick></span></div><hr>"
                 html+=single;
               }
 
@@ -308,7 +329,7 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -333,7 +354,7 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -358,7 +379,7 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -383,7 +404,7 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -408,7 +429,7 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -433,7 +454,7 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button>删除</button></span></div><hr>"
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteComment(\""+d.cid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -456,6 +477,288 @@
     job.style.backgroundColor = "transparent";
     other.style.backgroundColor = "transparent";
     commentManage.style.backgroundColor = "transparent";
+  }
+
+
+  function deleteComment(cid){
+    console.log("jinlail"+cid);
+
+    fetch('/Pbhz/manageServlet?action=deleteComment&cid='+cid)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.text(); // assuming server returns JSON
+            })
+            .then(data => {
+              // Handle the response data as needed
+              console.log("data:"+data);
+              loadComment();
+            })
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+            });
+  }
+
+
+  function deleteQuestion(qid){
+    console.log("进入了qid")
+
+    fetch('http://localhost:8080/Pbhz/manageServlet?action=deleteQuestion&qid='+qid)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.text(); // assuming server returns JSON
+            })
+            .then(data => {
+              // Handle the response data as needed
+              console.log("data:"+data);
+              switch (option){
+                case learning: loadLearning();break;
+                case psychogical:loadPsychogical();break;
+                case health: loadHealth();break;
+                case law: loadLaw();break;
+                case job: loadJob();break;
+                case other: loadOther();break;
+              }
+
+            })
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+            });
+
+  }
+
+  function deleteUser(username){
+    fetch('/Pbhz/manageServlet?action=deleteUser&username='+username)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.text(); // assuming server returns JSON
+            })
+            .then(data => {
+              // Handle the response data as needed
+              console.log("data:"+data);
+              switch (option) {
+                case normalUser:
+                  loadNormalUser();
+                  break;
+                case blacklist:
+                  loadBlackList();
+                  break;
+              }
+
+            })
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+            });
+  }
+
+  function addBlack(username){
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=addBlack&username="+username)
+            .then(response => response.text())
+            .then(data=>{
+              console.log(data);
+              loadNormalUser();
+            })
+            .catch(error => console.error(error));
+  }
+
+  function removeBlack(username){
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=removeBlack&username="+username)
+            .then(response => response.text())
+            .then(data=>{
+              console.log(data);
+              loadBlackList();
+            })
+            .catch(error => console.error(error));
+  }
+
+
+  function searchNormalUser(key){
+    console.log("searchNormalUser")
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=searchNormalUser&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>拉黑</span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='addBlack(\""+d.username+"\")'>确认拉黑</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
+                html += single;
+              }
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+  function searchBlackList(key){
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=searchBlackList&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>恢复正常</span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='removeBlack(\""+d.username+"\")'>确认恢复</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
+                html += single;
+              }
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+  function searchLearning(key){
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=searchLearning&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</buttononclick></span></div><hr>"
+                html+=single;
+              }
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+  function searchPsychogical(key){
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=searchPsychogical&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+  function searchHealth(key){
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=searchHealth&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+
+  }
+  function searchLaw(key){
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=searchLaw&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+  function searchJob(key){
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=searchJob&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+  function searchOther(key){
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=searchOther&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
+  }
+  function searchComment(key){
+
+    fetch("http://localhost:8080/Pbhz/manageServlet?action=searchComment&key="+key)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data);
+              let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
+
+              for(let d of data){
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteComment(\""+d.cid+"\")'>删除</button></span></div><hr>"
+                html+=single;
+              }
+
+
+
+              document.getElementById("main-mess").innerHTML = html;
+
+            })
+            .catch(error => console.error(error));
+
   }
 
 

@@ -157,5 +157,44 @@ public class CommentDAO {
         }
         return comments;
     }
+
+
+    public List<Comment> searchComment(String key) {
+        List<Comment> comments = new ArrayList<>();
+        String sql = "SELECT * FROM comment WHERE content LIKE ?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = JdbcUtil.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + key + "%");  // Include wildcard in setString
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Comment comment = new Comment();
+                comment.setQid(resultSet.getString("qid"));
+                comment.setContent(resultSet.getString("content"));
+                comment.setDate(resultSet.getTimestamp("date"));
+                comment.setCid(resultSet.getString("cid"));
+                comment.setName(resultSet.getString("name"));
+                comment.setFileName(resultSet.getString("filename"));
+                comment.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
+                comments.add(comment);
+            }
+        } catch (SQLException e) {
+            // Handle the exception, log it, or rethrow it
+            e.printStackTrace();  // Log the exception or handle it according to your logging strategy
+        } finally {
+            JdbcUtil.close(connection);
+            JdbcUtil.close(preparedStatement);
+            JdbcUtil.close(resultSet);
+        }
+
+        return comments;
+    }
+
 }
 

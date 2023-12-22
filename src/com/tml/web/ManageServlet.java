@@ -132,7 +132,93 @@ public class ManageServlet extends HttpServlet {
         response.getWriter().write(json);
     }
 
+    protected void addBlack(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String username = request.getParameter("username");
+        UserInform userInform = new UserInfoImpl();
+        userInform.addBlack(username);
+        response.getWriter().write("success");
+    }
 
+    protected void removeBlack(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String username = request.getParameter("username");
+        UserInform userInform = new UserInfoImpl();
+        userInform.removeBlack(username);
+        response.getWriter().write("success");
+    }
+
+    protected void searchNormalUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String key = request.getParameter("key");
+        UserInfoImpl userInfo = new UserInfoImpl();
+        List<User> userList = userInfo.searchNormalUser(key);
+        String json = gson.toJson(userList);
+        response.getWriter().write(json);
+
+
+    }
+    protected void searchBlackList(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        UserInfoImpl userInfo = new UserInfoImpl();
+        String key = request.getParameter("key");
+        List<User> userList = userInfo.searchBlackList(key);
+        String json = gson.toJson(userList);
+        response.getWriter().write(json);
+
+    }
+    protected void searchLearning(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        String key = request.getParameter("key");
+
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.searchLearning(key);
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+
+    }
+    protected void searchPsychogical(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        String key = request.getParameter("key");
+
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.searchPsychogical(key);
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+    protected void searchHealth(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        String key = request.getParameter("key");
+
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.searchHealth(key);
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+    protected void searchLaw(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        String key = request.getParameter("key");
+
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.searchLaw(key);
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+    protected void searchJob(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        String key = request.getParameter("key");
+
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.searchJob(key);
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+    protected void searchOther(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        String key = request.getParameter("key");
+
+        QuestionServiceImpl questionService = new QuestionServiceImpl();
+        List<Question> questionList = questionService.searchOther(key);
+        String json = gson.toJson(questionList);
+        response.getWriter().write(json);
+    }
+    protected void searchComment(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String key = request.getParameter("key");
+        CommentServiceImpl commentService = new CommentServiceImpl();
+        List<Comment> commentList = commentService.searchComment(key);
+        String json = gson.toJson(commentList);
+        response.getWriter().write(json);
+    }
 
 
 

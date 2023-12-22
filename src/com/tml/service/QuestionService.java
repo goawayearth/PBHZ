@@ -2,6 +2,7 @@ package com.tml.service;
 
 import com.tml.bean.Question;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface QuestionService {
@@ -13,4 +14,11 @@ public interface QuestionService {
     public List<Question> getLaw();
     public List<Question> getJob();
     public List<Question> getOther();
+
+    public List<Question> searchLearning(String key) throws SQLException;
+    public List<Question> searchPsychogical(String key) throws SQLException;
+    public List<Question> searchHealth(String key) throws SQLException;
+    public List<Question> searchLaw(String key) throws SQLException;
+    public List<Question> searchJob(String key) throws SQLException;
+    public List<Question> searchOther(String key) throws SQLException;
 }

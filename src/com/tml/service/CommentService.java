@@ -9,5 +9,7 @@ public interface CommentService {
     void addComment(Comment comment);
     void deleteComment(String cid) throws SQLException;
     List<Comment> getComment();
+    List<Comment> searchComment(String key);
+
 }
 

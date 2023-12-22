@@ -301,5 +301,221 @@ public class QuestionDAO {
 
     }
 
+    public List<Question> searchLearning(String key) throws SQLException {
+        // 通过关键词搜索
+        List<Question> questions = new ArrayList<>();
+        String sql = "SELECT * FROM question WHERE type='learning' AND content LIKE ?";
+
+        try (Connection connection = JdbcUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            if (connection == null) {
+                System.out.println("Connection is null");
+            }
+
+            preparedStatement.setString(1, '%' + key + '%');
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Question question = new Question();
+                    question.setQid(resultSet.getString("qid"));
+                    question.setContent(resultSet.getString("content"));
+                    question.setDate(resultSet.getTimestamp("date"));
+                    question.setType(resultSet.getString("type"));
+                    question.setNum(resultSet.getInt("num"));
+                    question.setName(resultSet.getString("name"));
+                    question.setFilepath(resultSet.getString("filepath"));
+                    question.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
+                    questions.add(question);
+                }
+            }
+        } catch (SQLException e) {
+            // Handle the exception, log it, or rethrow it
+            e.printStackTrace(); // Log the exception or handle it according to your logging strategy
+            throw new SQLException("Error in searchLearning", e);
+        }
+
+        return questions;
+    }
+
+
+    public List<Question> searchPsychogical(String key) throws SQLException {
+        // 通过关键词搜索
+        List<Question> questions = new ArrayList<>();
+        String sql = "SELECT * FROM question WHERE type='psychogical' AND content LIKE ?";
+
+        try (Connection connection = JdbcUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            if (connection == null) {
+                System.out.println("Connection is null");
+            }
+
+            preparedStatement.setString(1, '%' + key + '%');
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Question question = new Question();
+                    question.setQid(resultSet.getString("qid"));
+                    question.setContent(resultSet.getString("content"));
+                    question.setDate(resultSet.getTimestamp("date"));
+                    question.setType(resultSet.getString("type"));
+                    question.setNum(resultSet.getInt("num"));
+                    question.setName(resultSet.getString("name"));
+                    question.setFilepath(resultSet.getString("filepath"));
+                    question.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
+                    questions.add(question);
+                }
+            }
+        } catch (SQLException e) {
+            // Handle the exception, log it, or rethrow it
+            e.printStackTrace(); // Log the exception or handle it according to your logging strategy
+            throw new SQLException("Error in searchLearning", e);
+        }
+
+        return questions;
+    }
+
+    public List<Question> searchHealth(String key) throws SQLException {
+        // 通过关键词搜索
+        List<Question> questions = new ArrayList<>();
+        String sql = "SELECT * FROM question WHERE type='health' AND content LIKE ?";
+
+        try (Connection connection = JdbcUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            if (connection == null) {
+                System.out.println("Connection is null");
+            }
+
+            preparedStatement.setString(1, '%' + key + '%');
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Question question = new Question();
+                    question.setQid(resultSet.getString("qid"));
+                    question.setContent(resultSet.getString("content"));
+                    question.setDate(resultSet.getTimestamp("date"));
+                    question.setType(resultSet.getString("type"));
+                    question.setNum(resultSet.getInt("num"));
+                    question.setName(resultSet.getString("name"));
+                    question.setFilepath(resultSet.getString("filepath"));
+                    question.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
+                    questions.add(question);
+                }
+            }
+        } catch (SQLException e) {
+            // Handle the exception, log it, or rethrow it
+            e.printStackTrace(); // Log the exception or handle it according to your logging strategy
+            throw new SQLException("Error in searchLearning", e);
+        }
+
+        return questions;
+    }
+
+    public List<Question> searchLaw(String key) throws SQLException {
+        // 通过关键词搜索
+        List<Question> questions = new ArrayList<>();
+        String sql = "SELECT * FROM question WHERE type='law' AND content LIKE ?";
+
+        try (Connection connection = JdbcUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            if (connection == null) {
+                System.out.println("Connection is null");
+            }
+
+            preparedStatement.setString(1, '%' + key + '%');
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Question question = new Question();
+                    question.setQid(resultSet.getString("qid"));
+                    question.setContent(resultSet.getString("content"));
+                    question.setDate(resultSet.getTimestamp("date"));
+                    question.setType(resultSet.getString("type"));
+                    question.setNum(resultSet.getInt("num"));
+                    question.setName(resultSet.getString("name"));
+                    question.setFilepath(resultSet.getString("filepath"));
+                    question.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
+                    questions.add(question);
+                }
+            }
+        } catch (SQLException e) {
+            // Handle the exception, log it, or rethrow it
+            e.printStackTrace(); // Log the exception or handle it according to your logging strategy
+            throw new SQLException("Error in searchLearning", e);
+        }
+
+        return questions;
+    }
+
+    public List<Question> searchJob(String key) throws SQLException {
+        // 通过关键词搜索
+        List<Question> questions = new ArrayList<>();
+        String sql = "SELECT * FROM question WHERE type='job' AND content LIKE ?";
+
+        try (Connection connection = JdbcUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            if (connection == null) {
+                System.out.println("Connection is null");
+            }
+
+            preparedStatement.setString(1, '%' + key + '%');
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Question question = new Question();
+                    question.setQid(resultSet.getString("qid"));
+                    question.setContent(resultSet.getString("content"));
+                    question.setDate(resultSet.getTimestamp("date"));
+                    question.setType(resultSet.getString("type"));
+                    question.setNum(resultSet.getInt("num"));
+                    question.setName(resultSet.getString("name"));
+                    question.setFilepath(resultSet.getString("filepath"));
+                    question.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
+                    questions.add(question);
+                }
+            }
+        } catch (SQLException e) {
+            // Handle the exception, log it, or rethrow it
+            e.printStackTrace(); // Log the exception or handle it according to your logging strategy
+            throw new SQLException("Error in searchLearning", e);
+        }
+
+        return questions;
+    }
+
+    public List<Question> searchOther(String key) throws SQLException {
+        // 通过关键词搜索
+        List<Question> questions = new ArrayList<>();
+        String sql = "SELECT * FROM question WHERE type='other' AND content LIKE ?";
+
+        try (Connection connection = JdbcUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            if (connection == null) {
+                System.out.println("Connection is null");
+            }
+
+            preparedStatement.setString(1, '%' + key + '%');
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Question question = new Question();
+                    question.setQid(resultSet.getString("qid"));
+                    question.setContent(resultSet.getString("content"));
+                    question.setDate(resultSet.getTimestamp("date"));
+                    question.setType(resultSet.getString("type"));
+                    question.setNum(resultSet.getInt("num"));
+                    question.setName(resultSet.getString("name"));
+                    question.setFilepath(resultSet.getString("filepath"));
+                    question.setIcon(userDAO.check_id(resultSet.getString("name")).getIconPath());
+                    questions.add(question);
+                }
+            }
+        } catch (SQLException e) {
+            // Handle the exception, log it, or rethrow it
+            e.printStackTrace(); // Log the exception or handle it according to your logging strategy
+            throw new SQLException("Error in searchLearning", e);
+        }
+
+        return questions;
+    }
 
 }

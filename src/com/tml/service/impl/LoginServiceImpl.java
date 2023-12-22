@@ -13,6 +13,9 @@ public class LoginServiceImpl implements LoginService {
         if(user == null){
             return "用户不存在";
         }
+        if(user.getState()==0){
+            return "black";
+        }
         if(!password.equals(user.getPassword())){
             return "账号或者密码不正确";
         }

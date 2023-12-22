@@ -2,55 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登陆页面</title>
+    <title>Title</title>
     <link rel="stylesheet" href="../css/login.css">
 
 </head>
 <body>
-
-    <div class="container">
-        <div id="error" class="error"></div>
-        <h2>登录</h2>
-        <form >
-            <div class="form-group">
-                <label >Username:</label>
-                <input type="text" id="username" >
-            </div>
-            <div class="form-group">
-                <label >Password:</label>
-                <input type="password" id="password" >
-            </div>
-
-<!--            <div class="container1">-->
-<!--                <div class="v_code">-->
-<!--                    <div class="input_code">-->
-<!--                        <label for="inputCode" class="biaoqian">验证码：</label>-->
-<!--                        <input type="text" id="inputCode" />-->
-
-<!--                    </div>-->
-<!--                    <div class="code_show">-->
-<!--                        <span class="code" id="checkCode"></span>-->
-<!--                        <a id="linkbt">看不清换一张</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--            </div>-->
-            <span style="color: black; font-size: 16px; ">
-                验证码
-                <input id="login-validate" name="validate" type="text" placeholder="请输入验证码" style="font-size: 16px;width: 150px;"/>
-                <img id="img" src="http://localhost:8080/Pbhz/validateCode"  οnclick="changeImg()" style="margin-top: 10px"/>
+<div class="container">
+    <div id="error" class="error"></div>
+    <div class="box">
+        <div class="left">
+            <div class="circle"></div>
+            <div class="text-label">Welcome</div>
+        </div>
+        <div class="right">
+            <label class="loginLabel">登录</label>
+            <input id='username' class="input" type="text" placeholder="用户名">
+            <input id='password' class="input" type="password" placeholder="密码">
+            <span class="code input" style=" font-size: 16px; ">
+                <input id="login-validate" name="validate" type="text" placeholder="请输入验证码" style="font-size: 16px;width: 170px;"/>
+                <img id="img" src="http://localhost:8080/Pbhz/validateCode"  οnclick="changeImg()" />
             </span>
-
-            <button id="Button">Login</button>
-
-        </form>
-        <div class="aregis">
-        <a href="register.html">注册</a>
+            <button id='Button' class="input" >立即登录</button>
+            <div class="aregis" id="aregis">
+                <a class="registerbuton" href="register.html">没有账号？立即注册</a>
+            </div>
         </div>
     </div>
-
-    <script src="../js/login.js"></script>
-
+</div>
+<script src="../js/login.js"></script>
 </body>
 </html>

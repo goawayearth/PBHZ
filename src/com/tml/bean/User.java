@@ -8,6 +8,15 @@ public class User {
     private String username = null;
     private String password = null;
     private String iconPath = null;
+    private int state = 1;
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 
     public String getIconPath() {
         return iconPath;

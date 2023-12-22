@@ -18,12 +18,26 @@ window.onload = function(){
                         document.getElementById("username").value = "";
                         document.getElementById("password").value = "";
                         document.getElementById('login-validate').value = '';
+                        changeImg();
                     } else if (data.fin === "ok1") {
                         document.getElementById("error").innerText = "验证码错误";
                         // document.getElementById("username").value = "";
                         // document.getElementById("password").value = "";
                         document.getElementById('login-validate').value = '';
-                    } else {
+                        changeImg();
+
+                    }
+                    else if(data.fin === "ok2"){
+                        document.getElementById("error").innerText = "您已被网站管理员拉黑";
+                        document.getElementById("username").value = "";
+                        document.getElementById("password").value = "";
+                        document.getElementById('login-validate').value = '';
+                        document.getElementById("aregis").innerHTML="";
+                        document.getElementById("Button").style.backgroundColor="#5d5b5b"
+                        changeImg();
+                    }
+
+                    else {
                         document.getElementById("error").inner = "正确";
                         var path = String(data.path);
                         path = path + "?username=" + username;
