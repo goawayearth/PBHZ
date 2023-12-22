@@ -1,6 +1,10 @@
+let usernameAble=false,passwordAble = false;
 document.addEventListener("DOMContentLoaded", function () {
     // 页面加载完成之后
 
+    document.getElementById("register-btn").onclick = function (){
+        return (usernameAble && passwordAble);
+    }
     // 获取用户名输入框
     var usernameInput = document.getElementById("username");
     // 注册失去焦点事件
@@ -12,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(typeof (username));
         if(username == null || username == ""){
             errorMsgSpan.innerText="用户名不能为空！";
+            usernameAble = false;
         }
         else{
             // 创建XMLHttpRequest对象
@@ -28,8 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (data.existsUsername) {
                         errorMsgSpan.innerText = "用户名已存在！";
+                        usernameAble = false;
                     } else {
                         errorMsgSpan.innerText = "用户名可用！";
+                        usernameAble = true;
                     }
                 }
             }};
@@ -54,13 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("22")
             // 密码不符合格式，显示错误信息
             document.getElementById("error").innerText = "密码必须包含数字和字母，并且长度为5到12位。";
+            passwordAble = false;
         } else {
             console.log("33")
             // 密码符合格式，清空错误信息
             document.getElementById("error").innerText = "";
+            passwordAble = true;
         }
     });
 
 });
+
 
 
