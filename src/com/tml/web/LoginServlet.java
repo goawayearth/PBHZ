@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
         //整体而言，这段代码处理了用户的 GET 请求，根据用户登录的成功与否生成不同的 JSON 响应。
         // 如果登录成功，返回包含重定向路径的 JSON；如果登录失败，返回包含 "fin" 属性的 JSON。
         // 这种方式通常用于在客户端进行页面重定向或显示错误消息。
-        if(result.equals("success")&&validate1.equals(valiCode)){
+        if(result.equals("success")&&validate1.equalsIgnoreCase(valiCode)){
             //得到session
 //            session = request.getSession();
             //设置最长访问间隔时间是一天
@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
         }
         else{
             String fin = null;
-            if(valiCode.equals(validate1)){
+            if(valiCode.equalsIgnoreCase(validate1)){
                  fin = "ok";
             }
             else{
