@@ -179,9 +179,10 @@
     }
 
     function prevSlide() {
-        currentIndex = (currentIndex - 1 ) % totalItems;
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
         updateCarousel();
     }
+
 
     function updateCarousel() {
         const newTransformValue = -currentIndex * 1028 + 'px';
@@ -197,19 +198,20 @@
         clearInterval(intervalId);
     }
 
+
     function transitionEndHandler() {
         if (currentIndex === totalItems - 1) {
-            // 如果当前是最后一张图，立即切换到第一张图，实现无限滚动
             document.querySelector('.carousel-container').style.transition = 'none';
             currentIndex = 0;
             document.querySelector('.carousel-container').style.transform = 'translateX(0px)';
+        } else if (currentIndex === 0) {
+            document.querySelector('.carousel-container').style.transition = 'none';
+            currentIndex = totalItems - 1;
+            const newTransformValue = -currentIndex * 1028 + 'px';
+            document.querySelector('.carousel-container').style.transform = 'translateX(' + newTransformValue + ')';
         }
-        // else if(currentIndex === 0){
-        //     document.querySelector('.carousel-container').style.transition = 'none';
-        //     currentIndex = totalItems -1;
-        //     document.querySelector('.carousel-container').style.transform = 'translateX(0px)';
-        // }
     }
+
 
 
     startAutoSlide();

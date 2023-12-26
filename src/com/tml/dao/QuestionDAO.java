@@ -304,7 +304,7 @@ public class QuestionDAO {
     public List<Question> searchLearning(String key) throws SQLException {
         // 通过关键词搜索
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM question WHERE type='learning' AND content LIKE ?";
+        String sql = "SELECT * FROM question WHERE type='learning' AND content LIKE ?  order by date desc";
 
         try (Connection connection = JdbcUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -341,7 +341,7 @@ public class QuestionDAO {
     public List<Question> searchPsychogical(String key) throws SQLException {
         // 通过关键词搜索
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM question WHERE type='psychogical' AND content LIKE ?";
+        String sql = "SELECT * FROM question WHERE type='psychogical' AND content LIKE ?  order by date desc";
 
         try (Connection connection = JdbcUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -377,7 +377,7 @@ public class QuestionDAO {
     public List<Question> searchHealth(String key) throws SQLException {
         // 通过关键词搜索
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM question WHERE type='health' AND content LIKE ?";
+        String sql = "SELECT * FROM question WHERE type='health' AND content LIKE ?  order by date desc";
 
         try (Connection connection = JdbcUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -413,7 +413,7 @@ public class QuestionDAO {
     public List<Question> searchLaw(String key) throws SQLException {
         // 通过关键词搜索
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM question WHERE type='law' AND content LIKE ?";
+        String sql = "SELECT * FROM question WHERE type='law' AND content LIKE ?  order by date desc";
 
         try (Connection connection = JdbcUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -449,7 +449,7 @@ public class QuestionDAO {
     public List<Question> searchJob(String key) throws SQLException {
         // 通过关键词搜索
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM question WHERE type='job' AND content LIKE ?";
+        String sql = "SELECT * FROM question WHERE type='job' AND content LIKE ?  order by date desc";
 
         try (Connection connection = JdbcUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -485,7 +485,7 @@ public class QuestionDAO {
     public List<Question> searchOther(String key) throws SQLException {
         // 通过关键词搜索
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM question WHERE type='other' AND content LIKE ?";
+        String sql = "SELECT * FROM question WHERE type='other' AND content LIKE ?  order by date desc";
 
         try (Connection connection = JdbcUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

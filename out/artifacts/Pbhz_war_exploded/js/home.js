@@ -46,38 +46,40 @@ window.onload = function(){
         loadOther();
     }
 
-    document.getElementById("search-button").onclick = function (){
+    document.getElementById("search-button").onclick = function () {
         addContent();
         let key = document.getElementById("search-key").value;
-        console.log(key)
-        if(key===""){
+        console.log(key);
+        if (key === "") {
             loadHomePage();
         }
-        fetch("http://localhost:8080/Pbhz/homeLoadServlet?action=searchKey&key="+key)
+        fetch("http://localhost:8080/Pbhz/homeLoadServlet?action=searchKey&key=" + key)
             .then(response => response.json())
-            .then(data=>{
-                //处理数据
+            .then(data => {
+                // 处理数据
                 let html = "";
-                //处理返回的内容
-                for(let d of data){
-                    let single = "<div class='single-rect'>"+
-                        "<br>"+
-                        "<div class='use'><div class='icon-person'><a href='users.jsp?username="+d.name+"'><img class='icon-image1' src='"+d.icon+"' alt='faild'></a></div>"+
-                        "<div class='name'><a href='users.jsp?username="+d.name+"'>"+d.name+" :</a></div></div>" +
-                        "<a href='reply.jsp?id="+d.qid+"'><div class='cont'>"+d.content+"</div></a>" +
-                        "<div><span class='theme'>#"+d.type+"#</span> <span class='date'>发表于"+d.date+"</span> </div>"+
+                // 处理返回的内容
+                for (let d of data) {
+                    // Replace occurrences of the search key with highlighted version
+                    let highlightedContent = d.content.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+
+                    let single = "<div class='single-rect'>" +
+                        "<br>" +
+                        "<div class='use'><div class='icon-person'><a href='users.jsp?username=" + d.name + "'><img class='icon-image1' src='" + d.icon + "' alt='faild'></a></div>" +
+                        "<div class='name'><a href='users.jsp?username=" + d.name + "'>" + d.name + " :</a></div></div>" +
+                        "<a href='reply.jsp?id=" + d.qid + "'><div class='cont'>" + highlightedContent + "</div></a>" +
+                        "<div><span class='theme'>#" + d.type + "#</span> <span class='date'>发表于" + d.date + "</span> </div>" +
                         "<br></div>";
 
-                    html+=single;
+                    html += single;
                 }
 
-                document.getElementById("otherPage").innerHTML = html+"<br><br>";
-
-
+                document.getElementById("otherPage").innerHTML = html + "<br><br>";
             })
-            .catch(error => console.error('error:',error));
+            .catch(error => console.error('error:', error));
         return false;
     }
+
 
 }
 

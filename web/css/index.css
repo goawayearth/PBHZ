@@ -457,3 +457,6 @@ body {
     display: flex;
 }
 
+.redColor{
+    color: red;
+}

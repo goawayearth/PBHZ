@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>后台管理</title>
   <style>
+    a{
+      color: black;
+      text-decoration: none;
+    }
     body {
       margin: 0;
       padding: 0;
@@ -125,6 +129,13 @@
     /*  background-color: white;*/
     /*  cursor: pointer;*/
     /*}*/
+
+    .redColor{
+      width: auto !important;
+      color: red !important;
+      margin-left: -100px;
+      display: inline !important;
+    }
 
   </style>
 </head>
@@ -252,6 +263,7 @@
     option = normalUser;
     makeALLTran();
     normalUser.style.backgroundColor = "red";
+    console.log("loadNormal");
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadNormalUser")
             .then(response => response.json())
@@ -578,16 +590,23 @@
 
 
   function searchNormalUser(key){
+    console.log("key:"+key);
+    if(key==null || key===""){
+      loadNormalUser();
+      return false;
+    }
     console.log("searchNormalUser")
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=searchNormalUser&key="+key)
             .then(response => response.json())
             .then(data=>{
               console.log(data);
+
               let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>拉黑</span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='addBlack(\""+d.username+"\")'>确认拉黑</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
+                let highlightedContent = d.username.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+highlightedContent+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='addBlack(\""+d.username+"\")'>确认拉黑</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
                 html += single;
               }
               document.getElementById("main-mess").innerHTML = html;
@@ -597,15 +616,20 @@
 
   }
   function searchBlackList(key){
-
+    if(key==null || key==""){
+      loadBlackList();
+      return false ;
+    }
     fetch("http://localhost:8080/Pbhz/manageServlet?action=searchBlackList&key="+key)
             .then(response => response.json())
             .then(data=>{
               console.log(data);
+
               let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>恢复正常</span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='removeBlack(\""+d.username+"\")'>确认恢复</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
+                let highlightedContent = d.username.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+highlightedContent+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='removeBlack(\""+d.username+"\")'>确认恢复</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
                 html += single;
               }
               document.getElementById("main-mess").innerHTML = html;
@@ -615,7 +639,10 @@
 
   }
   function searchLearning(key){
-
+    if(key==null || key==""){
+      loadLearning();
+      return false ;
+    }
     fetch("http://localhost:8080/Pbhz/manageServlet?action=searchLearning&key="+key)
             .then(response => response.json())
             .then(data=>{
@@ -623,7 +650,8 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</buttononclick></span></div><hr>"
+                let highlightedContent = d.content.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+highlightedContent+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</buttononclick></span></div><hr>"
                 html+=single;
               }
 
@@ -634,7 +662,10 @@
 
   }
   function searchPsychogical(key){
-
+    if(key==null || key==""){
+      loadPsychogical();
+      return false ;
+    }
     fetch("http://localhost:8080/Pbhz/manageServlet?action=searchPsychogical&key="+key)
             .then(response => response.json())
             .then(data=>{
@@ -642,7 +673,8 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                let highlightedContent = d.content.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+highlightedContent+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -655,7 +687,10 @@
 
   }
   function searchHealth(key){
-
+    if(key==null || key==""){
+      loadHealth();
+      return false ;
+    }
     fetch("http://localhost:8080/Pbhz/manageServlet?action=searchHealth&key="+key)
             .then(response => response.json())
             .then(data=>{
@@ -663,7 +698,8 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                let highlightedContent = d.content.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+highlightedContent+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -677,7 +713,10 @@
 
   }
   function searchLaw(key){
-
+    if(key==null || key==""){
+      loadLaw();
+      return false ;
+    }
     fetch("http://localhost:8080/Pbhz/manageServlet?action=searchLaw&key="+key)
             .then(response => response.json())
             .then(data=>{
@@ -685,7 +724,8 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                let highlightedContent = d.content.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+highlightedContent+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -698,7 +738,10 @@
 
   }
   function searchJob(key){
-
+    if(key==null || key==""){
+      loadJob();
+      return false ;
+    }
     fetch("http://localhost:8080/Pbhz/manageServlet?action=searchJob&key="+key)
             .then(response => response.json())
             .then(data=>{
@@ -706,7 +749,8 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                let highlightedContent = d.content.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+highlightedContent+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -719,7 +763,10 @@
 
   }
   function searchOther(key){
-
+    if(key==null || key==""){
+      loadOther();
+      return false ;
+    }
     fetch("http://localhost:8080/Pbhz/manageServlet?action=searchOther&key="+key)
             .then(response => response.json())
             .then(data=>{
@@ -727,7 +774,8 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
+                let highlightedContent = d.content.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+highlightedContent+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteQuestion(\""+d.qid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
@@ -740,7 +788,11 @@
 
   }
   function searchComment(key){
-
+    console.log(key);
+    if(key==null || key==""){
+      loadComment();
+      return false ;
+    }
     fetch("http://localhost:8080/Pbhz/manageServlet?action=searchComment&key="+key)
             .then(response => response.json())
             .then(data=>{
@@ -748,7 +800,8 @@
               let html = "<div class='sp'><span>姓名</span><span>内容</span><span>日期</span><span><a>详情页</a></span><span>删除</span></div><hr>";
 
               for(let d of data){
-                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+d.content+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteComment(\""+d.cid+"\")'>删除</button></span></div><hr>"
+                let highlightedContent = d.content.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
+                let single = "<div class='sp'><span><a href='users.jsp?username="+d.name+"'>"+d.name+"</a></span><span>"+highlightedContent+"</span><span>"+d.date+"</span><span><a href='reply.jsp?id="+d.qid+"'>查看详情</a></span><span><button onclick='deleteComment(\""+d.cid+"\")'>删除</button></span></div><hr>"
                 html+=single;
               }
 
