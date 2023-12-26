@@ -14,7 +14,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name="loginServlet")
+//@WebServlet(name="loginServlet")
+@WebServlet("/loginServlet")
 public class LoginServlet extends HttpServlet {
 
     private String password = null;
