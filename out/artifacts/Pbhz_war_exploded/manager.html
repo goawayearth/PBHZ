@@ -16,7 +16,9 @@
     }
 
     .navbar {
-      background-color: #555;
+      /*background-color: #555;*/
+      background-color: #288dd1;
+
       color: #fff;
       padding: 4px;
       text-align: center;
@@ -29,7 +31,8 @@
     }
 
     .sidebar {
-      background-color: #555;
+      /*background-color: #555;*/
+      background-color: #288dd1;
       color: #fff;
       padding: 15px;
       width: 200px;
@@ -132,7 +135,7 @@
 
     .redColor{
       width: auto !important;
-      color: red !important;
+      color:  red!important;
       margin-left: -100px;
       display: inline !important;
     }
@@ -262,7 +265,7 @@
   function loadNormalUser(){
     option = normalUser;
     makeALLTran();
-    normalUser.style.backgroundColor = "red";
+    normalUser.style.backgroundColor = "#9fd8f6";
     console.log("loadNormal");
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadNormalUser")
@@ -272,6 +275,7 @@
               let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>拉黑</span><span>删除</span></div><hr>";
 
               for(let d of data){
+                if(d.username==='root')continue;
                 let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+d.username+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='addBlack(\""+d.username+"\")'>确认拉黑</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
                 html += single;
               }
@@ -286,7 +290,7 @@
   function loadBlackList(){
     option = blacklist;
     makeALLTran();
-    blacklist.style.backgroundColor = "red";
+    blacklist.style.backgroundColor = "#9fd8f6";
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadBlackList")
             .then(response => response.json())
@@ -308,7 +312,7 @@
   function loadLearning(){
     option = learning;
     makeALLTran();
-    learning.style.backgroundColor = "red";
+    learning.style.backgroundColor = "#9fd8f6";
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadLearning")
             .then(response => response.json())
@@ -332,7 +336,7 @@
   function loadPsychogical(){
     option = psychogical;
     makeALLTran();
-    psychogical.style.backgroundColor = "red";
+    psychogical.style.backgroundColor = "#9fd8f6";
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadPsychogical")
             .then(response => response.json())
@@ -357,7 +361,7 @@
   function loadHealth(){
     option=health;
     makeALLTran();
-    health.style.backgroundColor = "red";
+    health.style.backgroundColor = "#9fd8f6";
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadHealth")
             .then(response => response.json())
@@ -382,7 +386,7 @@
   function loadLaw(){
     option = law;
     makeALLTran();
-    law.style.backgroundColor = "red";
+    law.style.backgroundColor = "#9fd8f6";
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadLaw")
             .then(response => response.json())
@@ -407,7 +411,7 @@
   function loadJob(){
     option = job;
     makeALLTran();
-    job.style.backgroundColor = "red";
+    job.style.backgroundColor = "#9fd8f6";
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadJob")
             .then(response => response.json())
@@ -432,7 +436,7 @@
   function loadOther(){
     option = other;
     makeALLTran();
-    other.style.backgroundColor = "red";
+    other.style.backgroundColor = "#9fd8f6";
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadOther")
             .then(response => response.json())
@@ -457,7 +461,7 @@
   function loadComment(){
     option = commentManage;
     makeALLTran();
-    commentManage.style.backgroundColor = "red";
+    commentManage.style.backgroundColor = "#9fd8f6";
 
     fetch("http://localhost:8080/Pbhz/manageServlet?action=loadComment")
             .then(response => response.json())
@@ -605,6 +609,7 @@
               let html = "<div class='sp'><span>用户名</span><span>密码</span><span><a>个人主页</a></span><span>拉黑</span><span>删除</span></div><hr>";
 
               for(let d of data){
+                if(d.username==='root')continue;
                 let highlightedContent = d.username.replace(new RegExp(key, 'gi'), `<span class="redColor">${key}</span>`);
                 let single = "<div class='sp'><span><a href='users.jsp?username="+d.username+"'>"+highlightedContent+"</a></span><span>"+d.password+"</span><span><a href='users.jsp?username="+d.username+"'>查看主页</a></span><span><button onclick='addBlack(\""+d.username+"\")'>确认拉黑</button></span><span><button onclick='deleteUser(\""+d.username+"\")'>删除</button></span></div><hr>"
                 html += single;

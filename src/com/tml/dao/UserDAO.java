@@ -55,7 +55,11 @@ public class UserDAO {
     }
 
 
-
+    /**
+     * 创建新用户：注册
+     * @param username
+     * @param password
+     */
     public void create(String username,String password) {
 
         String sql = "insert into user(username,password) values(?,?)";
@@ -78,6 +82,11 @@ public class UserDAO {
 
     }
 
+    /**
+     * 根据username更新用户头像
+     * @param username
+     * @param path
+     */
     public void updateUserIcon(String username,String path){
         // 先找到原来的头像的名称，删掉图片
         // 将新的头像的名称写道数据库中
@@ -119,6 +128,10 @@ public class UserDAO {
 
     }
 
+    /**
+     * 根据username删除用户
+     * @param username
+     */
     public void deleteUser(String username){
         CommentDAO commentDAO = new CommentDAO();
         QuestionDAO questionDAO = new QuestionDAO();
@@ -179,6 +192,10 @@ public class UserDAO {
 
     }
 
+    /**
+     * 返回状态正常的用户
+     * @return
+     */
     public List<User> getNormalUser(){
         List<User> userList = new ArrayList<>();
         String sql = "select * from user where state = 1";
@@ -209,6 +226,10 @@ public class UserDAO {
         return userList;
     }
 
+    /**
+     * 返回黑名单用户
+     * @return
+     */
     public List<User> getBlackList(){
         List<User> userList = new ArrayList<>();
         String sql = "select * from user where state = 0";
@@ -239,6 +260,10 @@ public class UserDAO {
         return userList;
     }
 
+    /**
+     * 将username用户加到黑名单中
+     * @param username
+     */
     public void addBlack(String username){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -258,6 +283,10 @@ public class UserDAO {
 
     }
 
+    /**
+     * 将username从黑名单中移除
+     * @param username
+     */
     public void removeBlack(String username){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -277,6 +306,11 @@ public class UserDAO {
 
     }
 
+    /**
+     * 搜索含有key的正常用户
+     * @param key
+     * @return
+     */
     public List<User> searchNormalUser(String key) {
         List<User> userList = new ArrayList<>();
         String sql = "SELECT * FROM user WHERE state = 1 AND username LIKE ?";
@@ -314,6 +348,11 @@ public class UserDAO {
     }
 
 
+    /**
+     * 搜索含有key的黑名单用户
+     * @param key
+     * @return
+     */
     public List<User> searchBlackList(String key){
         List<User> userList = new ArrayList<>();
         String sql = "SELECT * FROM user WHERE state = 0 AND username LIKE ?";

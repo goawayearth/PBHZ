@@ -14,6 +14,11 @@ public class QuestionDAO {
 
     UserDAO userDAO = new UserDAO();
 
+    /**
+     * 搜索某类型的帖子前两条
+     * @param type
+     * @return
+     */
     public List<Question> check_type(String type){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -53,6 +58,11 @@ public class QuestionDAO {
     }
 
 
+    /**
+     * 搜索某类型的帖子的全部，最多20条
+     * @param type
+     * @return
+     */
     public List<Question> check_type_all(String type){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -98,6 +108,12 @@ public class QuestionDAO {
     }
 
 
+    /**
+     * 根据qid搜索帖子
+     * @param qid
+     * @return
+     * @throws SQLException
+     */
     public Question check_id(String qid) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -136,6 +152,12 @@ public class QuestionDAO {
 
     }
 
+    /**
+     * 搜索包含key的内容
+     * @param key
+     * @return
+     * @throws SQLException
+     */
     public List<Question> check_key(String key) throws SQLException {
         // 通过关键词搜索
 
@@ -178,6 +200,10 @@ public class QuestionDAO {
         return questions;
     }
 
+    /**
+     * 将帖子写进数据库
+     * @param question
+     */
     public void save(Question question){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -213,6 +239,12 @@ public class QuestionDAO {
 
     }
 
+    /**
+     * 根据uid搜索帖子
+     * @param uid
+     * @return
+     * @throws SQLException
+     */
     public List<Question> check_uid(String uid) throws SQLException {
         // 通过关键词搜索
 
@@ -254,6 +286,10 @@ public class QuestionDAO {
         return questions;
     }
 
+    /**
+     * 根据qid删除帖子
+     * @param qid
+     */
     public void deleteQuestion(String qid){
         CommentDAO commentDAO = new CommentDAO();
         //删除所有评论和评论图片
@@ -301,6 +337,12 @@ public class QuestionDAO {
 
     }
 
+    /**
+     * 搜索相关包含key的内容
+     * @param key
+     * @return
+     * @throws SQLException
+     */
     public List<Question> searchLearning(String key) throws SQLException {
         // 通过关键词搜索
         List<Question> questions = new ArrayList<>();
